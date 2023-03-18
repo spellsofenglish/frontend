@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { AuthPage } from './pages/AuthPage';
 import { HomePage } from './pages/HomePage';
+import { AuthPage } from './pages/AuthPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 function App() {
