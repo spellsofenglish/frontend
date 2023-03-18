@@ -1,12 +1,17 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import { HomePage } from './pages/HomePage';
+import { AuthPage } from './pages/AuthPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Let&apos;s start!</p>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<AuthPage />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 
