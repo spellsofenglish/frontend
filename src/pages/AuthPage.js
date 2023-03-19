@@ -1,3 +1,7 @@
+/**
+ * @prettier
+ */
+
 import React from 'react';
 
 export const AuthPage = () => {
@@ -7,6 +11,6 @@ export const AuthPage = () => {
         <h1>AUTH</h1>
         <p>test page AuthPage</p>
       </header>
-  </div>
+    </div>
   );
 };

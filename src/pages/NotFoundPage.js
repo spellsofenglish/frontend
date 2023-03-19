@@ -1,3 +1,7 @@
+/**
+ * @prettier
+ */
+
 import React from 'react';
 
 export const NotFoundPage = () => {
@@ -7,6 +11,6 @@ export const NotFoundPage = () => {
         <h1>NotFoundPage</h1>
         <p>NotFoundPage NotFoundPage NotFoundPage NotFoundPage</p>
       </header>
-  </div>
+    </div>
   );
 };
