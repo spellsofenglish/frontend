@@ -1,0 +1,39 @@
+#--main-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../../assets/backgrounds/authorisation.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-left: 158px;
+  background-position: center;
+  display: flex;
+  align-items: center;
+
+  .container {
+    height: fit-content;
+    width: 500px;
+  }
+
+  .logo-large {
+    background-image: url(../../assets/logo/logo_big.png);
+    width: 450px;
+    height: 286px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin: 0 auto;
+  }
+
+  .starting-element {
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+  }
+
+  .redirecting-menu {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}
