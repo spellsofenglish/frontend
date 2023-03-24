@@ -6,7 +6,7 @@ import React from 'react';
 
 import './styles.scss';
 
-import Start from './forms/start';
+import Start from './forms/start/start';
 
 const MainView = (props) => {
   return (
