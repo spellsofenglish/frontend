@@ -8,6 +8,8 @@
   background-position: center;
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 1;
 
   .container {
     height: fit-content;
@@ -35,5 +37,83 @@
     gap: 20px;
     flex-direction: column;
     margin: 0 auto;
+  }
+
+  .form.form-big {
+    height: 831px;
+    background-image: url(../../assets/backgrounds/form-big.png);
+  }
+
+  .form {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    height: 691px;
+    margin: 65px 0px 0px 0px;
+    padding: 73px 50px 70px;
+    background-image: url(../../assets/backgrounds/form.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &__logo {
+      position: absolute;
+      width: 180px;
+      height: 117px;
+      top: -56px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      background-image: url(../../assets/logo/logo_big.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+
+    &__wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &__contract {
+      font-size: 14px;
+      line-height: 20px;
+      padding-top: 24px;
+    }
+
+    &__contract-btn,
+    &__remember-btn {
+      color: #309CFF;
+      cursor: pointer;
+      display: inline-block;
+      border-bottom: 1px solid transparent;
+      transition: all .3s linear;
+    }
+
+    &__recovery,
+    &__remember-btn {
+      margin-bottom: 16px;
+    }
+
+    &__contract-btn:hover,
+    &__remember-btn:hover {
+      border-bottom: 1px solid #2087E7;
+    }
+
+    &__contract-btn:active,
+    &__remember-btn:active {
+      color: #6020E7;
+      transition: all .1s linear;
+      border-bottom: 1px solid transparent;
+    }
+
+    .error-response-text {
+      font-size: 16px;
+      line-height: 24px;
+      color: #DF1616;
+      padding-bottom: 16px;
+    }
   }
 }

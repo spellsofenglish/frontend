@@ -1,0 +1,20 @@
+.question-block {
+  span {
+    color: #2087E7;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+    transition: all .3s linear;
+  }
+
+  span:hover {
+    border-bottom: 1px solid #2087E7;
+  }
+
+  span:active {
+    color: #6020E7;
+    transition: all .1s linear;
+    border-bottom: 1px solid transparent;
+  }
+}

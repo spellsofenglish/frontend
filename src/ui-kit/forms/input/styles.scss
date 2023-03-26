@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding-bottom: 16px;
+
+  label {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  input {
+    outline: none;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    padding: 10px 12px;
+    background: rgba(226, 235, 244, 0.05);
+    border: 1px solid rgba(226, 235, 244, 0.25);
+    border-radius: 6px;
+    transition: all .3s linear;
+  }
+
+  input:hover {
+    border: 1px solid rgba(226, 235, 244, 0.5);
+  }
+
+  input:focus {
+    border: 1px solid #EC840A;
+  }
+
+  input[type="password"] {
+    padding-right: 40px;
+  }
+
+  .error {
+    font-size: 12px;
+    line-height: 18px;
+    color: #DF1616;
+  }
+
+  input:hover.errorInput,
+  input:focus.errorInput,
+  .errorInput {
+    border: 1px solid #DF1616;
+  }
+}
