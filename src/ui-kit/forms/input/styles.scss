@@ -34,4 +34,16 @@
   input[type="password"] {
     padding-right: 40px;
   }
+
+  .error {
+    font-size: 12px;
+    line-height: 18px;
+    color: #DF1616;
+  }
+
+  input:hover.errorInput,
+  input:focus.errorInput,
+  .errorInput {
+    border: 1px solid #DF1616;
+  }
 }

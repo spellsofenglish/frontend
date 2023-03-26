@@ -9,17 +9,25 @@ import './styles.scss';
 
 const InputBtn = (props) => {
   return (
-    <input className="form-btn" type={props.type} value={props.value} onClick={props.onClick} />
+    <input
+      disabled={props.disabled}
+      className="form-btn"
+      type={props.type}
+      value={props.value}
+      onClick={props.onClick}
+    />
   );
 };
 
 InputBtn.propTypes = {
+  disabled: PropTypes.bool,
   type: PropTypes.string,
   value: PropTypes.string,
   onClick: PropTypes.func,
 };
 
 InputBtn.defaultProps = {
+  disabled: false,
   type: 'submit',
   value: 'Создать аккаунт',
   onClick: () => {},
