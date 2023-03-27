@@ -20,7 +20,7 @@ const Authorization = (props) => {
 
   const onClickLogin = () => {
     if (isValid) {
-      console.log('Вход в аккаунт');
+      console.log(`Вход в аккаунт ${JSON.stringify(data)}`);
       //логика для обработки ошибки от бэка
       //кладём в setErrorResponse("Неправильный email или пароль")
     }
