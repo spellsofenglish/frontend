@@ -29,7 +29,7 @@ const Registration = (props) => {
     console.log('Открытие модального окна - Пользовательское соглашение');
   };
 
-  const watchPassword = watch('password');
+  const watchPassword = watch(['password', 'repeat-password']);
   return (
     <div className="form form-big ">
       <div className="form__logo">
@@ -77,8 +77,7 @@ const Registration = (props) => {
                 },
                 validate: {
                   noSpace: (value) =>
-                    value.trim().includes(' ') === false ||
-                    'Your password must not contain spaces!',
+                    value.trim().includes(' ') === false || 'Формат email неверный',
                 },
               }}
             />
@@ -116,7 +115,7 @@ const Registration = (props) => {
                 required: 'Поле обязательно для заполнения',
                 validate: {
                   passwordCorrection: (value) =>
-                    value.toString() === watchPassword.toString() || 'Пароли не совпадают',
+                    value.toString() === watchPassword[0].toString() || 'Пароли не совпадают',
                 },
               }}
             />
