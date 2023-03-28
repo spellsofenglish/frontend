@@ -51,6 +51,12 @@
     top: 50%;
     cursor: pointer;
     transform: translateY(-50%);
+
+    svg{
+      display: block;
+      width: inherit;
+      height: inherit;
+    }
   }
 
   .error {

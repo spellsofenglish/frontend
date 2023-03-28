@@ -1,7 +1,7 @@
 import Button from './button';
-import QuestionBlock from './forms/question-block';
-import TitleForm from './forms/title';
-import InputForm from './forms/input';
-import InputBtn from './forms/input-btn';
+import QuestionBlock from './question-block';
+import TitleForm from './title';
+import InputForm from './input';
+import InputBtn from './input-btn';
 
 export { Button, QuestionBlock, TitleForm, InputForm, InputBtn };

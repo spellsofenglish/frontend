@@ -18,7 +18,7 @@ const Authorization = (props) => {
     mode: 'onChange',
   });
 
-  const onClickLogin = () => {
+  const onClickLogin = (data) => {
     if (isValid) {
       console.log(`Вход в аккаунт ${JSON.stringify(data)}`);
       //логика для обработки ошибки от бэка
