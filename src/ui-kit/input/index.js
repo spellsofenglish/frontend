@@ -19,7 +19,7 @@ const InputForm = ({
   required,
   validationSchema,
 }) => {
-  const [showPasswordEye, setShowPasswordEye] = useState(false);
+  const [showPasswordEye, setShowPasswordEye] = useState(true);
   const [showPasswordValue, setShowPasswordValue] = useState(type);
 
   const getInputClassName = () => {
@@ -31,7 +31,7 @@ const InputForm = ({
   };
 
   const togglePasswordEye = () => {
-    showPasswordEye === false ? setShowPasswordEye(true) : setShowPasswordEye(false);
+    showPasswordEye === true ? setShowPasswordEye(false) : setShowPasswordEye(true);
     showPasswordValue === 'text' ? setShowPasswordValue('password') : setShowPasswordValue('text');
   };
   return (
@@ -48,7 +48,7 @@ const InputForm = ({
         />
         {name === 'password' || name === 'repeat-password' ? (
           <div className="btn-toggle" onClick={togglePasswordEye}>
-            {showPasswordEye === true ? <EyeShow /> : <EyeHide />}
+            {showPasswordEye === true ? <EyeHide /> : <EyeShow />}
           </div>
         ) : null}
       </div>
