@@ -7,8 +7,7 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-import eyeHide from '../../../assets/form/eye-hide.png';
-import eyeShow from '../../../assets/form/eye-show.png';
+import { EyeShow, EyeHide } from '../../assets/svg/index';
 
 const InputForm = ({
   label,
@@ -20,7 +19,7 @@ const InputForm = ({
   required,
   validationSchema,
 }) => {
-  const [showPasswordEye, setShowPasswordEye] = useState(eyeHide);
+  const [showPasswordEye, setShowPasswordEye] = useState(true);
   const [showPasswordValue, setShowPasswordValue] = useState(type);
 
   const getInputClassName = () => {
@@ -32,7 +31,7 @@ const InputForm = ({
   };
 
   const togglePasswordEye = () => {
-    showPasswordEye === eyeHide ? setShowPasswordEye(eyeShow) : setShowPasswordEye(eyeHide);
+    showPasswordEye === true ? setShowPasswordEye(false) : setShowPasswordEye(true);
     showPasswordValue === 'text' ? setShowPasswordValue('password') : setShowPasswordValue('text');
   };
   return (
@@ -48,7 +47,9 @@ const InputForm = ({
           {...register(name, validationSchema)}
         />
         {name === 'password' || name === 'repeat-password' ? (
-          <img onClick={togglePasswordEye} className="btn-toggle" src={showPasswordEye} alt="eye" />
+          <div className="btn-toggle" onClick={togglePasswordEye}>
+            {showPasswordEye === true ? <EyeHide /> : <EyeShow />}
+          </div>
         ) : null}
       </div>
       {errors && errors[name]?.type === 'required' && (
