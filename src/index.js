@@ -8,7 +8,6 @@ import App from './App';
 import {store} from './store';
 
 import reportWebVitals from './reportWebVitals';
-import {PoliticsPage} from "./pages/main/PoliticsPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
