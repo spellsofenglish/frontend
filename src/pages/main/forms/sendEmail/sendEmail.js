@@ -30,9 +30,7 @@ const SendEmail = (props) => {
 
   return (
     <div className="form">
-      <div className="form__logo">
-        <></>
-      </div>
+      <div className="form__logo" />
       <div className="form__wrapper">
         <div className="form__block">
           <TitleForm text="Восстановление пароля" />

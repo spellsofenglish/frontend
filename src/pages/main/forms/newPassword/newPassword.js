@@ -7,6 +7,22 @@ import { useForm } from 'react-hook-form';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
 
+const NEW_PASSWORD_SCHEMA = {
+  required: 'Поле обязательно для заполнения',
+  maxLength: {
+    value: 50,
+    message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
+  },
+  minLength: {
+    value: 8,
+    message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
+  },
+  pattern: {
+    value: /^[A-Za-z0-9!?@#$%^&*()/|*--+=_`'";:~.,]+$/g,
+    message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
+  },
+};
+
 const NewPassword = (props) => {
   const {
     register,
@@ -18,6 +34,16 @@ const NewPassword = (props) => {
     mode: 'onChange',
   });
 
+  const watchPassword = watch('password');
+
+  const PASSWORD_SCHEMA = {
+    required: 'Поле обязательно для заполнения',
+    validate: {
+      passwordCorrection: (value) =>
+        value.toString() === watchPassword.toString() || 'Пароли не совпадают',
+    },
+  };
+
   const onClickNewPassword = (data) => {
     if (isValid) {
       console.log(`отправлена ${JSON.stringify(data)}`);
@@ -25,12 +51,9 @@ const NewPassword = (props) => {
     reset();
   };
 
-  const watchPassword = watch('password');
   return (
     <div className="form">
-      <div className="form__logo">
-        <></>
-      </div>
+      <div className="form__logo" />
       <div className="form__wrapper">
         <div className="form__block">
           <TitleForm text="Восстановление пароля" />
@@ -45,21 +68,7 @@ const NewPassword = (props) => {
               placeholder="Введи новый пароль"
               errors={errors}
               register={register}
-              validationSchema={{
-                required: 'Поле обязательно для заполнения',
-                maxLength: {
-                  value: 50,
-                  message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
-                },
-                minLength: {
-                  value: 8,
-                  message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
-                },
-                pattern: {
-                  value: /^[A-Za-z0-9!?@#$%^&*()/|*--+=_`'";:~.,]+$/g,
-                  message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
-                },
-              }}
+              validationSchema={NEW_PASSWORD_SCHEMA}
             />
             <InputForm
               label="Подтверждение пароля"
@@ -68,24 +77,13 @@ const NewPassword = (props) => {
               placeholder="Повтори новый пароль"
               errors={errors}
               register={register}
-              validationSchema={{
-                required: 'Поле обязательно для заполнения',
-                validate: {
-                  passwordCorrection: (value) =>
-                    value.toString() === watchPassword.toString() || 'Пароли не совпадают',
-                },
-              }}
+              validationSchema={PASSWORD_SCHEMA}
             />
-            <InputBtn
-              disabled={isValid ? false : true}
-              type="submit"
-              value="Сохранить и начать игру"
-              onClick={() => {}}
-            />
+            <InputBtn disabled={!isValid} value="Сохранить и начать игру" />
           </form>
         </div>
         <QuestionBlock
-          text="У меня уже есть аккаунт. "
+          text="У меня уже есть аккаунт."
           textBtn="Войти в аккаунт"
           onClick={() => props.setFormToStart(1)}
         />
