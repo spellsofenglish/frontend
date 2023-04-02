@@ -35,11 +35,11 @@ const sizes = {
     width: 48,
     height: 48,
   },
-  //medium: {
-  //   class: 'medium',
-  //   width: null,
-  //   height: null,
-  // },
+  medium: {
+    class: 'medium',
+    width: 118,
+    height: 48,
+  },
   large: {
     class: 'large',
     width: 400,
@@ -53,7 +53,7 @@ const types = {
 };
 
 Button.propTypes = {
-  size: PropTypes.oneOf(['small', 'large']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   type: PropTypes.oneOf(['default', 'outlined']),
   label: PropTypes.string,
   onClick: PropTypes.func,

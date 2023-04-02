@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
 
 import App from './App';
-import { store } from './features/index';
+import { store } from './features';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <App/>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
