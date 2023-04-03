@@ -12,7 +12,7 @@ const Start = (props) => {
       <div className="logo-large" />
       <div className="redirecting-menu">
         <Button label="Уже есть аккаунт" size="large" onClick={() => props.setFormToStart(1)} />
-        <Button label="Создать аккаунт" size="large" onClick={() => props.setFormToStart(2)} />
+        <Button label="Создать аккаунт" size="large" onClick={() => props.setFormToStart(4)} />
       </div>
     </div>
   );
