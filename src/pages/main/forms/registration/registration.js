@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
@@ -64,6 +64,8 @@ const Registration = (props) => {
 
   const watchPassword = watch(['password', 'repeat-password']);
 
+  const navigate = useNavigate();
+
   const REPEATE_PASSWORD_SCHEMA = {
     required: 'Поле обязательно для заполнения',
     validate: {
@@ -81,6 +83,7 @@ const Registration = (props) => {
 
   const openModal = () => {
     console.log('Открытие модального окна - Пользовательское соглашение');
+    navigate('/politics');
   };
 
   return (
@@ -133,7 +136,7 @@ const Registration = (props) => {
               Нажимая кнопку «Создать аккаунт», я принимаю условия
             </p>
             <p onClick={openModal} className="form__contract-btn">
-              <Link to="/politics">Пользовательского соглашения</Link>
+              Пользовательского соглашения
             </p>
           </div>
         </div>

@@ -83,7 +83,7 @@ const Authorization = (props) => {
               register={register}
               validationSchema={PASSWORD_SCHEMA}
             />
-            <p className="error-response-text">errorResponse Неправильный email или пароль</p>
+            {/* <p className="error-response-text">errorResponse Неправильный email или пароль</p> */}
             <p className="form__remember-btn" onClick={() => props.setFormToStart(3)}>
               Не помню пароль
             </p>

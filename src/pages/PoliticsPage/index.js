@@ -3,11 +3,15 @@
  */
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './styles.scss';
+
 import { Button } from '../../ui-kit';
 
 export const PoliticsPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="background__politics">
@@ -18,7 +22,7 @@ export const PoliticsPage = () => {
           </div>
         </div>
         <div className="container">
-          <button className="button__politics back" />
+          <button className="button__politics back" onClick={() => navigate(-1)} />
         </div>
         <article className="politics">
           <section className="container">
@@ -439,7 +443,7 @@ export const PoliticsPage = () => {
               1С-777 Лимитед (1С-777 Limited) является администратором персональных данных, пр
             </p>
             <div className="close">
-              <Button label="Закрыть" size="medium" />
+              <Button label="Закрыть" size="medium" onClick={() => navigate(-1)} />
             </div>
           </section>
         </article>
