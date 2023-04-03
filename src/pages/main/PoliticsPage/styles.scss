@@ -3,6 +3,8 @@
 $dark-blue: #2A293D;
 $font-style: 'Inter';
 
+
+
 .background__politics {
   background: #1D1C2B;
   padding-bottom: 78px;
@@ -10,7 +12,7 @@ $font-style: 'Inter';
 
 .container {
   margin: 0 auto;
-  width: 1680px;
+  width: 100vw;
 }
 
 .header__politics {
@@ -48,7 +50,11 @@ $font-style: 'Inter';
   text-align: center;
   margin: 0 auto;
   background: #FFFFFF;
-  width: 1560px;
+  max-width: 1560px;
+
+  h1 {
+    text-align: left;
+  }
 }
 
 h1 {

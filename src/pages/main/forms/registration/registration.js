@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
@@ -132,7 +133,7 @@ const Registration = (props) => {
               Нажимая кнопку «Создать аккаунт», я принимаю условия
             </p>
             <p onClick={openModal} className="form__contract-btn">
-              Пользовательского соглашения
+              <Link to="/politics">Пользовательского соглашения</Link>
             </p>
           </div>
         </div>
