@@ -1,0 +1,83 @@
+.background__politics {
+  background: #1D1C2B;
+  padding-bottom: 78px;
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+  $dark-blue: #2A293D;
+  $font-style: 'Inter';
+
+  .container {
+    margin: 0 auto;
+    max-width: 100vw;
+  }
+
+  .header__politics {
+    border-bottom: 1px solid rgba(226, 235, 244, 0.25);
+  }
+
+  .buttons__politics {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 120px;
+  }
+
+  .button__politics {
+    width: 48px;
+    height: 48px;
+    margin: 16px 0;
+    background: $dark-blue;
+    box-shadow: inset 0 6px 4px rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+  }
+
+  .home {
+    background: url("../../assets/svg/home.svg") no-repeat center;
+  }
+
+  .rules {
+    background: url("../../assets/svg/rules.svg") no-repeat center;
+  }
+
+  .back {
+    margin: 32px 0 24px 120px;
+    background: url("../../assets/svg/back.svg") no-repeat center;
+  }
+
+  .politics {
+    text-align: center;
+    margin: 0 auto;
+    background: #FFFFFF;
+    max-width: 1560px;
+    padding-bottom: 64px;
+
+    h1 {
+      text-align: left;
+      padding-top: 64px;
+      font-family: $font-style;
+      font-style: normal;
+      font-size: 32px;
+      line-height: 44px;
+      color: $dark-blue;
+    }
+  }
+
+  section {
+    width: 950px;
+
+    h2, p {
+    text-align: left;
+    margin-top: 24px;
+    font-family: $font-style;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: $dark-blue;
+    }
+
+    .close {
+       padding-top: 32px;
+     }
+  }
+}
