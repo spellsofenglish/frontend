@@ -8,6 +8,7 @@ import MainView from '../main/mainView';
 
 const MainPage = () => {
   const [formToStart, setFormToStart] = useState(0);
+
   // const getTestData = async () => {
   //   try {
   //     const result = await ChurchesListService.get();

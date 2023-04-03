@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-import { EyeShow, EyeHide } from '../../assets/svg/index';
+import { Icon } from '../';
 
 const InputForm = ({
   label,
@@ -23,17 +23,14 @@ const InputForm = ({
   const [showPasswordValue, setShowPasswordValue] = useState(type);
 
   const getInputClassName = () => {
-    if (errors[name]?.type === undefined) {
-      return '';
-    } else {
-      return 'errorInput';
-    }
+    !errors[name]?.type ? '' : 'errorInput';
   };
 
   const togglePasswordEye = () => {
-    showPasswordEye === true ? setShowPasswordEye(false) : setShowPasswordEye(true);
+    setShowPasswordEye(!showPasswordEye);
     showPasswordValue === 'text' ? setShowPasswordValue('password') : setShowPasswordValue('text');
   };
+
   return (
     <div className="wrapper">
       <label htmlFor={name}>{label}</label>
@@ -48,7 +45,7 @@ const InputForm = ({
         />
         {name === 'password' || name === 'repeat-password' ? (
           <div className="btn-toggle" onClick={togglePasswordEye}>
-            {showPasswordEye === true ? <EyeHide /> : <EyeShow />}
+            <Icon name={showPasswordEye ? 'eyeHidden' : 'eyeShown'} />
           </div>
         ) : null}
       </div>

@@ -3,9 +3,53 @@
  */
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
+
+const NAME_SCHEMA = {
+  required: 'Поле обязательно для заполнения',
+  maxLength: {
+    value: 50,
+    message: 'Имя должно содержать не более 50 латинских букв или цифр',
+  },
+  pattern: {
+    value: /^[A-Za-z0-9]+$/g,
+    message: 'Имя должно содержать латинские буквы или цифры',
+  },
+};
+
+const EMAIL_SCHEMA = {
+  required: 'Поле обязательно для заполнения',
+  maxLength: {
+    value: 50,
+    message: 'Email должен содержать не более 50 латинских букв, цифр или символов',
+  },
+  pattern: {
+    value: /(^|\s+)[\w\-.]+@([\w-]+\.)+[\w-]{2,4}($|\s+)/,
+    message: 'Формат email неверный',
+  },
+  validate: {
+    noSpace: (value) => value.trim().includes(' ') === false || 'Формат email неверный',
+  },
+};
+
+const PASSWORD_SCHEMA = {
+  required: 'Поле обязательно для заполнения',
+  maxLength: {
+    value: 50,
+    message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
+  },
+  minLength: {
+    value: 8,
+    message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
+  },
+  pattern: {
+    value: /^[A-Za-z0-9!?@#$%^&*()/|*--+=_`'";:~.,]+$/g,
+    message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
+  },
+};
 
 const Registration = (props) => {
   const {
@@ -18,6 +62,18 @@ const Registration = (props) => {
     mode: 'onChange',
   });
 
+  const watchPassword = watch(['password', 'repeat-password']);
+
+  const navigate = useNavigate();
+
+  const REPEATE_PASSWORD_SCHEMA = {
+    required: 'Поле обязательно для заполнения',
+    validate: {
+      passwordCorrection: (value) =>
+        value.toString() === watchPassword[0].toString() || 'Пароли не совпадают',
+    },
+  };
+
   const onClickRegistration = (data) => {
     if (isValid) {
       console.log(`отправлена ${JSON.stringify(data)}`);
@@ -27,14 +83,12 @@ const Registration = (props) => {
 
   const openModal = () => {
     console.log('Открытие модального окна - Пользовательское соглашение');
+    navigate('/politics');
   };
 
-  const watchPassword = watch(['password', 'repeat-password']);
   return (
     <div className="form form-big ">
-      <div className="form__logo">
-        <></>
-      </div>
+      <div className="form__logo" />
       <div className="form__wrapper">
         <div className="form__block">
           <TitleForm text="Создание аккаунта" />
@@ -46,17 +100,7 @@ const Registration = (props) => {
               placeholder="Иван"
               errors={errors}
               register={register}
-              validationSchema={{
-                required: 'Поле обязательно для заполнения',
-                maxLength: {
-                  value: 50,
-                  message: 'Имя должно содержать не более 50 латинских букв или цифр',
-                },
-                pattern: {
-                  value: /^[A-Za-z0-9]+$/g,
-                  message: 'Имя должно содержать латинские буквы или цифры',
-                },
-              }}
+              validationSchema={NAME_SCHEMA}
             />
             <InputForm
               label="Email"
@@ -65,21 +109,7 @@ const Registration = (props) => {
               placeholder="Ivan@example.com"
               errors={errors}
               register={register}
-              validationSchema={{
-                required: 'Поле обязательно для заполнения',
-                maxLength: {
-                  value: 50,
-                  message: 'Email должен содержать не более 50 латинских букв, цифр или символов',
-                },
-                pattern: {
-                  value: /(^|\s+)[\w\-.]+@([\w-]+\.)+[\w-]{2,4}($|\s+)/,
-                  message: 'Формат email неверный',
-                },
-                validate: {
-                  noSpace: (value) =>
-                    value.trim().includes(' ') === false || 'Формат email неверный',
-                },
-              }}
+              validationSchema={EMAIL_SCHEMA}
             />
             <InputForm
               label="Пароль"
@@ -88,21 +118,7 @@ const Registration = (props) => {
               placeholder="Введи пароль"
               errors={errors}
               register={register}
-              validationSchema={{
-                required: 'Поле обязательно для заполнения',
-                maxLength: {
-                  value: 50,
-                  message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
-                },
-                minLength: {
-                  value: 8,
-                  message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
-                },
-                pattern: {
-                  value: /^[A-Za-z0-9!?@#$%^&*()/|*--+=_`'";:~.,]+$/g,
-                  message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
-                },
-              }}
+              validationSchema={PASSWORD_SCHEMA}
             />
             <InputForm
               label="Повторение пароля"
@@ -111,20 +127,9 @@ const Registration = (props) => {
               placeholder="Повтори пароль"
               errors={errors}
               register={register}
-              validationSchema={{
-                required: 'Поле обязательно для заполнения',
-                validate: {
-                  passwordCorrection: (value) =>
-                    value.toString() === watchPassword[0].toString() || 'Пароли не совпадают',
-                },
-              }}
+              validationSchema={REPEATE_PASSWORD_SCHEMA}
             />
-            <InputBtn
-              type="submit"
-              value="Создать аккаунт"
-              disabled={isValid ? false : true}
-              onClick={() => {}}
-            />
+            <InputBtn value="Создать аккаунт" disabled={isValid ? false : true} />
           </form>
           <div className="form__contract">
             <p className="form__contract-text">
