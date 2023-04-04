@@ -20,14 +20,16 @@ const SendEmail = (props) => {
     mode: 'onChange',
   });
 
+  const [modalActive, setModalActive] = useState(false);
+  const [email, setEmail] = useState('');
+
   const onClickSendEmail = (data) => {
     if (isValid) {
+      setEmail(data.email);
       console.log(`отправлена ${JSON.stringify(data)}`);
     }
     reset();
   };
-
-  const [modalActive, setModalActive] = useState(false);
 
   return (
     <>
@@ -82,9 +84,9 @@ const SendEmail = (props) => {
           />
         </div>
       </div>
-      <Modal active={modalActive} setActive={setModalActive} src={letterImg}>
+      <Modal active={modalActive} setActive={setModalActive} src={letterImg} alt="letter">
         <h2>Ссылка отправлена</h2>
-        <p>Мы отправили ссылку на восстановление пароля на example@gmail.com.</p>
+        <p>Мы отправили ссылку на восстановление пароля на {email}.</p>
         <p>Cледуй инструкциям письма и ты быстро вернешься в игру!</p>
       </Modal>
     </>

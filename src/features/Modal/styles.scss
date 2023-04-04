@@ -1,4 +1,4 @@
-  .modal {
+.modal {
    display: none;
    position: absolute;
    top: 50%;
@@ -9,10 +9,12 @@
    width: 100%;
    height: 617px;
    background: #1D1C2B;
-   box-shadow: 0 0 30px rgba(48, 156, 255, 0.5);
+   border: 1px solid #309CFF7F;
+   //border-image-source: linear-gradient(180deg, #459DFC 0%, #071A7A 100%);
    border-radius: 6px;
+   box-shadow: 0 0 30px rgba(48, 156, 255, 0.5);
 
-   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
    font-family: 'Inter';
    font-style: normal;
@@ -76,6 +78,8 @@
    width: 48px;
    height: 48px;
    background: #2A293D;
+   border: 1px solid #FFBC56 ;
+   //border-image-source: linear-gradient(180deg, #FFBC56 0%, #AD4202 100%);
    box-shadow: inset 0 6px 4px rgba(255, 255, 255, 0.25);
    border-radius: 6px;
    outline: none;
@@ -96,4 +100,3 @@
     display: flex;
     justify-content: flex-end;
   }
-
