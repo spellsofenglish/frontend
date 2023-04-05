@@ -30,6 +30,18 @@
     border: 1px solid #FFBC56 ;
     box-shadow: inset 0 6px 4px rgba(255, 255, 255, 0.25);
     border-radius: 6px;
+
+    //&::before {
+    //  content: "";
+    //  position: absolute;
+    //  top: -2px;
+    //  bottom: -2px;
+    //  left: -2px;
+    //  right: -2px;
+    //  background: linear-gradient(180deg, #FFBC56 0%, #AD4202 100%);
+    //  border-radius: 34px;
+    //  z-index: -9999;
+    //}
   }
 
   .home {
