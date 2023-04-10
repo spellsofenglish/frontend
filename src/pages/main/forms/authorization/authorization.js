@@ -10,7 +10,7 @@ import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-ki
 const PASSWORD_SCHEMA = {
   required: 'Поле обязательно для заполнения',
   maxLength: {
-    value: 50,
+    value: 24,
     message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
   },
   minLength: {
@@ -35,7 +35,7 @@ const EMAIL_SCHEMA = {
   },
   validate: {
     noSpace: (value) =>
-      value.trim().includes(' ') === false || 'Your password must not contain spaces!',
+      value.trim().includes(' ') === false || 'Email не должен содержать пробелов',
   },
 };
 
