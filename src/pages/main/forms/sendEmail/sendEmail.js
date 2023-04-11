@@ -4,10 +4,13 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
 
-const SendEmail = (props) => {
+const SendEmail = () => {
   const {
     register,
     formState: { errors, isValid },
@@ -16,6 +19,8 @@ const SendEmail = (props) => {
   } = useForm({
     mode: 'onChange',
   });
+
+  const dispatch = useDispatch();
 
   const onClickSendEmail = (data) => {
     if (isValid) {
@@ -71,9 +76,9 @@ const SendEmail = (props) => {
           </form>
         </div>
         <QuestionBlock
-          text="У меня уже есть аккаунт. "
+          text="У меня уже есть аккаунт."
           textBtn="Войти в аккаунт"
-          onClick={() => props.setFormToStart(1)}
+          onClick={() => dispatch(setStep('auth'))}
         />
       </div>
     </div>

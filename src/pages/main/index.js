@@ -2,27 +2,23 @@
  * @prettier
  */
 
-import React, { useState } from 'react';
-//import ChurchesListService from '../services/test';
+import React from 'react';
+
+import UsersService from '../../services/users';
+
 import MainView from '../main/mainView';
 
 const MainPage = () => {
-  const [formToStart, setFormToStart] = useState(0);
+  const createUser = async (data) => {
+    try {
+      const result = await UsersService.register(data);
+      console.log('result', result);
+    } catch {
+      return Promise.reject();
+    }
+  };
 
-  // const getTestData = async () => {
-  //   try {
-  //     const result = await ChurchesListService.get();
-  //     console.log('result', result);
-  //   } catch {
-  //     return Promise.reject();
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getTestData();
-  // }, []);
-
-  return <MainView formToStart={formToStart} setFormToStart={setFormToStart} />;
+  return <MainView createUser={createUser} />;
 };
 
 export default MainPage;

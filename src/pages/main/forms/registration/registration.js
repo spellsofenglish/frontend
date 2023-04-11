@@ -5,6 +5,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
 
@@ -65,6 +68,7 @@ const Registration = (props) => {
   const watchPassword = watch(['password', 'repeat-password']);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const REPEATE_PASSWORD_SCHEMA = {
     required: 'Поле обязательно для заполнения',
@@ -74,15 +78,20 @@ const Registration = (props) => {
     },
   };
 
-  const onClickRegistration = (data) => {
-    if (isValid) {
-      console.log(`отправлена ${JSON.stringify(data)}`);
-    }
+  const onClickRegistration = async (data) => {
+    const body = {
+      email: data.email,
+      nickName: data.name,
+      password: data.password,
+    };
+
+    console.log(body);
+    await props.createUser(body);
+
     reset();
   };
 
   const openModal = () => {
-    console.log('Открытие модального окна - Пользовательское соглашение');
     navigate('/politics');
   };
 
@@ -143,7 +152,7 @@ const Registration = (props) => {
         <QuestionBlock
           text="У меня уже есть аккаунт. "
           textBtn="Войти в аккаунт"
-          onClick={() => props.setFormToStart(1)}
+          onClick={() => dispatch(setStep('auth'))}
         />
       </div>
     </div>
