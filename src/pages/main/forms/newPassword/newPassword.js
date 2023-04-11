@@ -4,6 +4,9 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
 
@@ -23,7 +26,7 @@ const NEW_PASSWORD_SCHEMA = {
   },
 };
 
-const NewPassword = (props) => {
+const NewPassword = () => {
   const {
     register,
     formState: { errors, isValid },
@@ -35,6 +38,7 @@ const NewPassword = (props) => {
   });
 
   const watchPassword = watch('password');
+  const dispatch = useDispatch();
 
   const PASSWORD_SCHEMA = {
     required: 'Поле обязательно для заполнения',
@@ -85,7 +89,7 @@ const NewPassword = (props) => {
         <QuestionBlock
           text="У меня уже есть аккаунт."
           textBtn="Войти в аккаунт"
-          onClick={() => props.setFormToStart(1)}
+          onClick={() => dispatch(setStep('auth'))}
         />
       </div>
     </div>

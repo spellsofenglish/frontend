@@ -4,8 +4,11 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
+
+import { setStep } from '../../../../features/form/formSlice';
 
 const PASSWORD_SCHEMA = {
   required: 'Поле обязательно для заполнения',
@@ -39,7 +42,7 @@ const EMAIL_SCHEMA = {
   },
 };
 
-const Authorization = (props) => {
+const Authorization = () => {
   // const [errorResponse, setErrorResponse] = useState("");//для обработки ошибки от бэка
   const {
     register,
@@ -49,6 +52,8 @@ const Authorization = (props) => {
   } = useForm({
     mode: 'onChange',
   });
+
+  const dispatch = useDispatch();
 
   const onClickLogin = (data) => {
     if (isValid) {
@@ -84,16 +89,16 @@ const Authorization = (props) => {
               validationSchema={PASSWORD_SCHEMA}
             />
             {/* <p className="error-response-text">errorResponse Неправильный email или пароль</p> */}
-            <p className="form__remember-btn" onClick={() => props.setFormToStart(3)}>
+            <p className="form__remember-btn" onClick={() => dispatch(setStep('reset'))}>
               Не помню пароль
             </p>
             <InputBtn disabled={!isValid} type="submit" value="Войти" />
           </form>
         </div>
         <QuestionBlock
-          text="Еще нет аккаунта. "
+          text="Еще нет аккаунта."
           textBtn="Создать аккаунт"
-          onClick={() => props.setFormToStart(4)}
+          onClick={() => dispatch(setStep('reg'))}
         />
       </div>
     </div>
