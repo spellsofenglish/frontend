@@ -11,8 +11,7 @@ import MainView from '../main/mainView';
 const MainPage = () => {
   const createUser = async (data) => {
     try {
-      const result = await UsersService.register(data);
-      console.log('result', result);
+      await UsersService.register(data);
     } catch {
       return Promise.reject();
     }
