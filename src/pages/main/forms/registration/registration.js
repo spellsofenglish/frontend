@@ -85,7 +85,6 @@ const Registration = (props) => {
       password: data.password,
     };
 
-    console.log(body);
     await props.createUser(body);
 
     reset();
