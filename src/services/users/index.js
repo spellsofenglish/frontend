@@ -24,6 +24,11 @@ export default class UsersService {
       if (request.status !== HTTP_STATUS.SUCCESS) {
         return Promise.reject(`Incorrect status ${request.status}`);
       }
+<<<<<<< HEAD
+=======
+
+      return request.json();
+>>>>>>> eccd3c901c8cea040c96cf760f8c0155fb70a557
     } catch (error) {
       debug.error(
         `GET request was failed with path: ${URL}${this.API_ENDPOINTS.registration}`,
