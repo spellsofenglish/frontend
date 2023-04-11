@@ -10,6 +10,22 @@ import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
 
+const EMAIL_SCHEMA = {
+  required: 'Поле обязательно для заполнения',
+  maxLength: {
+    value: 50,
+    message: 'Email должен содержать не более 50 латинских букв, цифр или символов',
+  },
+  pattern: {
+    value: /(^|\s+)[\w\-.]+@([\w-]+\.)+[\w-]{2,4}($|\s+)/,
+    message: 'Формат email неверный',
+  },
+  validate: {
+    noSpace: (value) =>
+      value.trim().includes(' ') === false || 'Email не должен содержать пробелов',
+  },
+};
+
 const SendEmail = () => {
   const {
     register,
@@ -50,25 +66,10 @@ const SendEmail = () => {
               placeholder="Ivan@example.com"
               errors={errors}
               register={register}
-              validationSchema={{
-                required: 'Поле обязательно для заполнения',
-                maxLength: {
-                  value: 50,
-                  message: 'Email должен содержать не более 50 латинских букв, цифр или символов',
-                },
-                pattern: {
-                  value: /(^|\s+)[\w\-.]+@([\w-]+\.)+[\w-]{2,4}($|\s+)/,
-                  message: 'Формат email неверный',
-                },
-                validate: {
-                  noSpace: (value) =>
-                    value.trim().includes(' ') === false ||
-                    'Your password must not contain spaces!',
-                },
-              }}
+              validationSchema={EMAIL_SCHEMA}
             />
             <InputBtn
-              disabled={isValid ? false : true}
+              disabled={!isValid}
               type="submit"
               value="Отправить ссылку"
               onClick={openModal}

@@ -34,14 +34,15 @@ const EMAIL_SCHEMA = {
     message: 'Формат email неверный',
   },
   validate: {
-    noSpace: (value) => value.trim().includes(' ') === false || 'Формат email неверный',
+    noSpace: (value) =>
+      value.trim().includes(' ') === false || 'Email не должен содержать пробелов',
   },
 };
 
 const PASSWORD_SCHEMA = {
   required: 'Поле обязательно для заполнения',
   maxLength: {
-    value: 50,
+    value: 24,
     message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
   },
   minLength: {
@@ -65,10 +66,9 @@ const Registration = (props) => {
     mode: 'onChange',
   });
 
-  const watchPassword = watch(['password', 'repeat-password']);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const watchPassword = watch(['password', 'repeat-password']);
 
   const REPEATE_PASSWORD_SCHEMA = {
     required: 'Поле обязательно для заполнения',
@@ -138,7 +138,7 @@ const Registration = (props) => {
               register={register}
               validationSchema={REPEATE_PASSWORD_SCHEMA}
             />
-            <InputBtn value="Создать аккаунт" disabled={isValid ? false : true} />
+            <InputBtn value="Создать аккаунт" disabled={!isValid} />
           </form>
           <div className="form__contract">
             <p className="form__contract-text">

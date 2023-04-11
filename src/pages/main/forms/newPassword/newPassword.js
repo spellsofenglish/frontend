@@ -13,7 +13,7 @@ import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-ki
 const NEW_PASSWORD_SCHEMA = {
   required: 'Поле обязательно для заполнения',
   maxLength: {
-    value: 50,
+    value: 24,
     message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
   },
   minLength: {
