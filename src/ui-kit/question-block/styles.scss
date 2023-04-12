@@ -1,4 +1,7 @@
 .question-block {
+  display: flex;
+  gap: 10px;
+  
   span {
     color: #2087E7;
     cursor: pointer;

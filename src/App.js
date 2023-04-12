@@ -15,6 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/politics" element={<PoliticsPage />} />
+      <Route path="/auth" element={<MainPage isAuth={true} />} />
     </Routes>
   );
 }
