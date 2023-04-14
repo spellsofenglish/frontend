@@ -1,4 +1,4 @@
-.modal__background {
+.background {
   position: absolute;
   top: 0;
   left: 0;
@@ -9,32 +9,29 @@
   background: rgba(29, 28, 43, 0.9);
 }
 
-.modal {
+.modal__background {
    display: none;
-   position: absolute;
+   position: relative;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   max-width: 600px;
+   max-width: 602px;
    width: 100%;
-   height: 617px;
-   background: #1D1C2B;
+   height: 619px;
+   background: linear-gradient(180deg, #459DFC 0%, #071A7A 100%);
    border: 1px solid #309CFF7F;
-   //border-image-source: linear-gradient(180deg, #459DFC 0%, #071A7A 100%);
    border-radius: 6px;
    box-shadow: 0 0 30px rgba(48, 156, 255, 0.5);
 
-  //&::before {
-  //  content: "";
-  //  position: absolute;
-  //  top: -2px;
-  //  bottom: -2px;
-  //  left: -2px;
-  //  right: -2px;
-  //  background:  linear-gradient(180deg, #459DFC 0%, #071A7A 100%);
-  //  border-radius: 34px;
-  //  z-index: -9999;
-  //}
+  .modal {
+    transform: translateY(0.5px);
+    background: #1D1C2B;
+    max-width: 600px;
+    width: 100%;
+    height: 617px;
+    border-radius: 6px;
+    border: none;
+  }
 
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
@@ -42,35 +39,6 @@
    font-style: normal;
    color: #FFFFFF;
     text-align: left;
-
-    .close__btn {
-      width: 24px;
-      height: 24px;
-      position: relative;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .close__btn::before,
-    .close__btn::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      background-color: #EC840A;
-    }
-
-    .close__btn::before {
-      transform: rotate(45deg);
-    }
-
-    .close__btn::after {
-      transform: rotate(-45deg);
-    }
 
     h2 {
       margin-bottom: 24px;
@@ -88,28 +56,17 @@
     }
  }
 
- .modal.active {
+ .modal__background.active {
    display: block;
  }
 
- .modal__close {
-   cursor: pointer;
-   position: absolute;
-   left: 35em;
-   top: -1em;
-   width: 48px;
-   height: 48px;
-   background: #2A293D;
-   border: 1px solid #FFBC56 ;
-   //border-image-source: linear-gradient(180deg, #FFBC56 0%, #AD4202 100%);
-   box-shadow: inset 0 6px 4px rgba(255, 255, 255, 0.25);
-   border-radius: 6px;
-   outline: none;
- }
-
   .modal__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: -1;
-    width: 598px;
+    max-width: 600px;
+    width: 100%;
     height: 304px;
   }
 
