@@ -29,7 +29,15 @@ const MainPage = (props) => {
     }
   };
 
-  return <MainView createUser={createUser} />;
+  const login = async (data) => {
+    try {
+      await UsersService.login(data);
+    } catch {
+      return Promise.reject();
+    }
+  };
+
+  return <MainView createUser={createUser} login={login} />;
 };
 
 MainPage.propTypes = {

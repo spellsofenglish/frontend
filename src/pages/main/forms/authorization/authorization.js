@@ -42,7 +42,7 @@ const EMAIL_SCHEMA = {
   },
 };
 
-const Authorization = () => {
+const Authorization = (props) => {
   // const [errorResponse, setErrorResponse] = useState("");//для обработки ошибки от бэка
   const {
     register,
@@ -58,8 +58,7 @@ const Authorization = () => {
   const onClickLogin = (data) => {
     if (isValid) {
       console.log(`Вход в аккаунт ${JSON.stringify(data)}`);
-      //логика для обработки ошибки от бэка
-      //кладём в setErrorResponse("Неправильный email или пароль")
+      props.login(data);
     }
     reset();
   };

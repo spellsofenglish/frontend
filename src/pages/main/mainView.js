@@ -17,7 +17,7 @@ const MainView = (props) => {
       case 'start':
         return <Start />;
       case 'auth':
-        return <Authorization />;
+        return <Authorization login={props.login} />;
       case 'reset':
         return <NewPassword />;
       case 'email':
