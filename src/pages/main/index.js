@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 
 import UsersService from '../../services/users';
 import { setStep } from '../../features/form/formSlice';
+import { setAuthData } from '../../features/user/userResponseSlice';
 
 import MainView from '../main/mainView';
 
@@ -31,7 +32,8 @@ const MainPage = (props) => {
 
   const login = async (data) => {
     try {
-      await UsersService.login(data);
+      const user = await UsersService.login(data);
+      dispatch(setAuthData(user));
     } catch {
       return Promise.reject();
     }

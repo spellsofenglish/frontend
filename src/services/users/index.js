@@ -52,6 +52,8 @@ export default class UsersService {
       const requestData = await request.json();
 
       console.log(requestData);
+
+      return requestData;
     } catch (error) {
       debug.error(`GET request was failed with path: ${URL}${this.API_ENDPOINTS.login}`, error);
       throw await error.response?.json();
