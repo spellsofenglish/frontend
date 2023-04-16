@@ -62,6 +62,7 @@ const Authorization = (props) => {
     }
     reset();
   };
+
   return (
     <div className="form">
       <div className="form__logo" />
@@ -91,7 +92,7 @@ const Authorization = (props) => {
             <p className="form__remember-btn" onClick={() => dispatch(setStep('reset'))}>
               Не помню пароль
             </p>
-            <InputBtn disabled={!isValid} type="submit" value="Войти" />
+            <InputBtn disabled={!isValid || props.isLoading} type="submit" value="Войти" />
           </form>
         </div>
         <QuestionBlock

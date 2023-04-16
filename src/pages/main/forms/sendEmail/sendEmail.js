@@ -26,7 +26,7 @@ const EMAIL_SCHEMA = {
   },
 };
 
-const SendEmail = () => {
+const SendEmail = (props) => {
   const {
     register,
     formState: { errors, isValid },
@@ -69,7 +69,7 @@ const SendEmail = () => {
               validationSchema={EMAIL_SCHEMA}
             />
             <InputBtn
-              disabled={!isValid}
+              disabled={!isValid || props.isLoading}
               type="submit"
               value="Отправить ссылку"
               onClick={openModal}

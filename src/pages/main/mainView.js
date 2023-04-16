@@ -17,13 +17,13 @@ const MainView = (props) => {
       case 'start':
         return <Start />;
       case 'auth':
-        return <Authorization login={props.login} />;
+        return <Authorization login={props.login} isLoading={props.isLoading} />;
       case 'reset':
-        return <NewPassword />;
+        return <NewPassword isLoading={props.isLoading} />;
       case 'email':
-        return <SendEmail />;
+        return <SendEmail isLoading={props.isLoading} />;
       case 'reg':
-        return <Registration createUser={props.createUser} />;
+        return <Registration createUser={props.createUser} isLoading={props.isLoading} />;
       default:
         return null;
     }
