@@ -40,6 +40,7 @@ const SendEmail = (props) => {
 
   const onClickSendEmail = (data) => {
     if (isValid) {
+      props.changePassword(data);
       console.log(`отправлена ${JSON.stringify(data)}`);
     }
     reset();

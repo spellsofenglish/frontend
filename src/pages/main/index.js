@@ -36,10 +36,10 @@ const MainPage = (props) => {
     setIsLoading(false);
   };
 
-  const login = async (data) => {
+  const authorization = async (data) => {
     setIsLoading(true);
     try {
-      const user = await UsersService.login(data);
+      const user = await UsersService.authorization(data);
       dispatch(setAuthData(user));
       if (user.id) {
         // может ли быть ноль
@@ -51,12 +51,23 @@ const MainPage = (props) => {
     setIsLoading(false);
   };
 
+  const changePassword = async (data) => {
+    setIsLoading(true);
+    try {
+      await UsersService.changePassword(data);
+    } catch {
+      return Promise.reject();
+    }
+    setIsLoading(false);
+  };
+
   return (
     <MainView
       createUser={createUser}
-      login={login}
+      authorization={authorization}
       setIsLoading={setIsLoading}
       isLoading={isLoading}
+      changePassword={changePassword}
     />
   );
 };

@@ -58,7 +58,7 @@ const Authorization = (props) => {
   const onClickLogin = (data) => {
     if (isValid) {
       console.log(`Вход в аккаунт ${JSON.stringify(data)}`);
-      props.login(data);
+      props.authorization(data);
     }
     reset();
   };

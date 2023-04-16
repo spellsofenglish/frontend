@@ -8,7 +8,8 @@ import { HTTP_STATUS, URL } from '../config';
 export default class UsersService {
   static API_ENDPOINTS = {
     registration: '/auth/registration',
-    login: '/auth/login',
+    authorization: '/auth/login',
+    changePassword: '/auth/updatePassword',
   };
 
   static async register(data) {
@@ -33,17 +34,18 @@ export default class UsersService {
       throw await error.response?.json();
     }
   }
-
-  static async login(data) {
+  //credentials
+  static async authorization(data) {
+    console.log(window.document.cookie);
     try {
-      const request = await api.post(`${URL}${this.API_ENDPOINTS.login}`, {
+      const request = await api.post(`${URL}${this.API_ENDPOINTS.authorization}`, {
         headers: {
           'content-type': 'application/json',
         },
         body: JSON.stringify(data),
       });
 
-      debug.success('The result of creating a new user', request);
+      debug.success('The result of authorization', request);
 
       if (request.status !== HTTP_STATUS.SUCCESS) {
         return Promise.reject(`Incorrect status ${request.status}`);
@@ -55,7 +57,33 @@ export default class UsersService {
 
       return requestData;
     } catch (error) {
-      debug.error(`GET request was failed with path: ${URL}${this.API_ENDPOINTS.login}`, error);
+      debug.error(
+        `GET request was failed with path: ${URL}${this.API_ENDPOINTS.authorization}`,
+        error,
+      );
+      throw await error.response?.json();
+    }
+  }
+
+  static async changePassword(data) {
+    try {
+      const request = await api.post(`${URL}${this.API_ENDPOINTS.changePassword}`, {
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      debug.success('The result of changing a password', request);
+
+      if (request.status !== HTTP_STATUS.SUCCESS) {
+        return Promise.reject(`Incorrect status ${request.status}`);
+      }
+    } catch (error) {
+      debug.error(
+        `GET request was failed with path: ${URL}${this.API_ENDPOINTS.changePassword}`,
+        error,
+      );
       throw await error.response?.json();
     }
   }
