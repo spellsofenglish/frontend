@@ -9,7 +9,7 @@ import './styles.scss';
 
 import { MainPage } from './pages/index';
 import { PoliticsPage } from './pages/PoliticsPage';
-import { MenuPage } from './pages/menu-page';
+// import { MenuPage } from './pages/menu-page';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <Route path="/" element={<MainPage />} />
       <Route path="/politics" element={<PoliticsPage />} />
       <Route path="/auth" element={<MainPage isAuth={true} />} />
-      <Route path="/menu" element={<MenuPage />} />
+      {/*<Route path="/menu" element={<MenuPage />} />*/}
     </Routes>
   );
 }
