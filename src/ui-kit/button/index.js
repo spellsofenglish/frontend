@@ -45,16 +45,22 @@ const sizes = {
     width: 400,
     height: 48,
   },
+  auto: {
+    class: 'auto',
+    width: 'auto',
+    height: 48,
+  },
 };
 
 const types = {
   default: 'default',
   outlined: 'outlined',
+  dark: 'dark',
 };
 
 Button.propTypes = {
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  type: PropTypes.oneOf(['default', 'outlined']),
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'auto']),
+  type: PropTypes.oneOf(['default', 'outlined', 'dark']),
   label: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
