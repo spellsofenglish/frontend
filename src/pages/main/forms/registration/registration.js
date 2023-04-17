@@ -2,7 +2,7 @@
  * @prettier
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -10,6 +10,9 @@ import { useDispatch } from 'react-redux';
 import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
+import { Modal } from '../../../../features/Modal';
+
+import letterImg from '../../../../assets/images/letter.png';
 
 const NAME_SCHEMA = {
   required: 'Поле обязательно для заполнения',
@@ -56,6 +59,8 @@ const PASSWORD_SCHEMA = {
 };
 
 const Registration = (props) => {
+  const [email, setEmail] = useState('');
+
   const {
     register,
     formState: { errors, isValid },
@@ -85,6 +90,9 @@ const Registration = (props) => {
       password: data.password,
     };
 
+    props.setModalActive(true);
+    setEmail(data.email);
+
     await props.createUser(body);
 
     reset();
@@ -95,66 +103,78 @@ const Registration = (props) => {
   };
 
   return (
-    <div className="form form-big ">
-      <div className="form__logo" />
-      <div className="form__wrapper">
-        <div className="form__block">
-          <TitleForm text="Создание аккаунта" />
-          <form onSubmit={handleSubmit(onClickRegistration)}>
-            <InputForm
-              label="Имя"
-              name="name"
-              type="text"
-              placeholder="Иван"
-              errors={errors}
-              register={register}
-              validationSchema={NAME_SCHEMA}
-            />
-            <InputForm
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="Ivan@example.com"
-              errors={errors}
-              register={register}
-              validationSchema={EMAIL_SCHEMA}
-            />
-            <InputForm
-              label="Пароль"
-              name="password"
-              type="password"
-              placeholder="Введи пароль"
-              errors={errors}
-              register={register}
-              validationSchema={PASSWORD_SCHEMA}
-            />
-            <InputForm
-              label="Повторение пароля"
-              name="repeat-password"
-              type="password"
-              placeholder="Повтори пароль"
-              errors={errors}
-              register={register}
-              validationSchema={REPEATE_PASSWORD_SCHEMA}
-            />
-            <InputBtn value="Создать аккаунт" disabled={!isValid || props.isLoading} />
-          </form>
-          <div className="form__contract">
-            <p className="form__contract-text">
-              Нажимая кнопку «Создать аккаунт», я принимаю условия
-            </p>
-            <p onClick={openModal} className="form__contract-btn">
-              Пользовательского соглашения
-            </p>
+    <>
+      <div className="form form-big ">
+        <div className="form__logo" />
+        <div className="form__wrapper">
+          <div className="form__block">
+            <TitleForm text="Создание аккаунта" />
+            <form onSubmit={handleSubmit(onClickRegistration)}>
+              <InputForm
+                label="Имя"
+                name="name"
+                type="text"
+                placeholder="Иван"
+                errors={errors}
+                register={register}
+                validationSchema={NAME_SCHEMA}
+              />
+              <InputForm
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="Ivan@example.com"
+                errors={errors}
+                register={register}
+                validationSchema={EMAIL_SCHEMA}
+              />
+              <InputForm
+                label="Пароль"
+                name="password"
+                type="password"
+                placeholder="Введи пароль"
+                errors={errors}
+                register={register}
+                validationSchema={PASSWORD_SCHEMA}
+              />
+              <InputForm
+                label="Повторение пароля"
+                name="repeat-password"
+                type="password"
+                placeholder="Повтори пароль"
+                errors={errors}
+                register={register}
+                validationSchema={REPEATE_PASSWORD_SCHEMA}
+              />
+              <InputBtn value="Создать аккаунт" disabled={!isValid || props.isLoading} />
+            </form>
+            <div className="form__contract">
+              <p className="form__contract-text">
+                Нажимая кнопку «Создать аккаунт», я принимаю условия
+              </p>
+              <p onClick={openModal} className="form__contract-btn">
+                Пользовательского соглашения
+              </p>
+            </div>
           </div>
+          <QuestionBlock
+            text="У меня уже есть аккаунт. "
+            textBtn="Войти в аккаунт"
+            onClick={() => dispatch(setStep('auth'))}
+          />
         </div>
-        <QuestionBlock
-          text="У меня уже есть аккаунт. "
-          textBtn="Войти в аккаунт"
-          onClick={() => dispatch(setStep('auth'))}
-        />
       </div>
-    </div>
+      <Modal
+        active={props.modalActive}
+        setActive={props.setModalActive}
+        src={letterImg}
+        alt="letter"
+      >
+        <h2>Ссылка отправлена</h2>
+        <p>Мы отправили ссылку на восстановление пароля на {email}.</p>
+        <p>Cледуй инструкциям письма и ты быстро вернешься в игру!</p>
+      </Modal>
+    </>
   );
 };
 
