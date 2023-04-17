@@ -42,7 +42,7 @@ const EMAIL_SCHEMA = {
   },
 };
 
-const Authorization = () => {
+const Authorization = (props) => {
   // const [errorResponse, setErrorResponse] = useState("");//для обработки ошибки от бэка
   const {
     register,
@@ -58,11 +58,11 @@ const Authorization = () => {
   const onClickLogin = (data) => {
     if (isValid) {
       console.log(`Вход в аккаунт ${JSON.stringify(data)}`);
-      //логика для обработки ошибки от бэка
-      //кладём в setErrorResponse("Неправильный email или пароль")
+      props.authorization(data);
     }
     reset();
   };
+
   return (
     <div className="form">
       <div className="form__logo" />
@@ -92,7 +92,7 @@ const Authorization = () => {
             <p className="form__remember-btn" onClick={() => dispatch(setStep('reset'))}>
               Не помню пароль
             </p>
-            <InputBtn disabled={!isValid} type="submit" value="Войти" />
+            <InputBtn disabled={!isValid || props.isLoading} type="submit" value="Войти" />
           </form>
         </div>
         <QuestionBlock

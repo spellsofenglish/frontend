@@ -26,7 +26,7 @@ const NEW_PASSWORD_SCHEMA = {
   },
 };
 
-const NewPassword = () => {
+const NewPassword = (props) => {
   const {
     register,
     formState: { errors, isValid },
@@ -83,7 +83,7 @@ const NewPassword = () => {
               register={register}
               validationSchema={PASSWORD_SCHEMA}
             />
-            <InputBtn disabled={!isValid} value="Сохранить и начать игру" />
+            <InputBtn disabled={!isValid || props.isLoading} value="Сохранить и начать игру" />
           </form>
         </div>
         <QuestionBlock

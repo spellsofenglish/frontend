@@ -137,7 +137,7 @@ const Registration = (props) => {
               register={register}
               validationSchema={REPEATE_PASSWORD_SCHEMA}
             />
-            <InputBtn value="Создать аккаунт" disabled={!isValid} />
+            <InputBtn value="Создать аккаунт" disabled={!isValid || props.isLoading} />
           </form>
           <div className="form__contract">
             <p className="form__contract-text">
