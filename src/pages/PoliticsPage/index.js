@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './styles.scss';
 
-import { Button } from '../../ui-kit';
+import { Button, Icon } from '../../ui-kit';
 
 export const PoliticsPage = () => {
   const navigate = useNavigate();
@@ -17,12 +17,24 @@ export const PoliticsPage = () => {
       <div className="background__politics">
         <div className="header__politics">
           <div className="container buttons__politics">
-            <button className="button__politics home" />
-            <button className="button__politics rules" />
+            <div className="button__politics-background">
+              <button className="button__politics">
+                <Icon name="home" width="24px" height="24px" fill="#EC840A" />
+              </button>
+            </div>
+            <div className="button__politics-background">
+              <button className="button__politics">
+                <Icon name="rules" width="24px" height="24px" fill="#EC840A" />
+              </button>
+            </div>
           </div>
         </div>
         <div className="container">
-          <button className="button__politics back" onClick={() => navigate(-1)} />
+          <div className="button__politics-background button__back">
+            <button className="button__politics" onClick={() => navigate(-1)}>
+              <Icon name="arrow" width="24px" height="24px" fill="#EC840A" />
+            </button>
+          </div>
         </div>
         <article className="politics">
           <section className="container">
