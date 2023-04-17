@@ -4,13 +4,35 @@
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
 import { Modal } from '../../../../features/Modal';
 
 import letterImg from '../../../../assets/images/letter.png';
 
+const EMAIL_SCHEMA = {
+  required: 'Поле обязательно для заполнения',
+  maxLength: {
+    value: 50,
+    message: 'Email должен содержать не более 50 латинских букв, цифр или символов',
+  },
+  pattern: {
+    value: /(^|\s+)[\w\-.]+@([\w-]+\.)+[\w-]{2,4}($|\s+)/,
+    message: 'Формат email неверный',
+  },
+  validate: {
+    noSpace: (value) =>
+      value.trim().includes(' ') === false || 'Email не должен содержать пробелов',
+  },
+};
+
 const SendEmail = (props) => {
+  const [modalActive, setModalActive] = useState(false);
+  const [email, setEmail] = useState('');
+    
   const {
     register,
     formState: { errors, isValid },
@@ -19,12 +41,12 @@ const SendEmail = (props) => {
   } = useForm({
     mode: 'onChange',
   });
-
-  const [modalActive, setModalActive] = useState(false);
-  const [email, setEmail] = useState('');
+  
+  const dispatch = useDispatch();
 
   const onClickSendEmail = (data) => {
     if (isValid) {
+      props.changePassword(data);
       setEmail(data.email);
       console.log(`отправлена ${JSON.stringify(data)}`);
     }

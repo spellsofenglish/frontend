@@ -4,13 +4,16 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
+
+import { setStep } from '../../../../features/form/formSlice';
 
 const PASSWORD_SCHEMA = {
   required: 'Поле обязательно для заполнения',
   maxLength: {
-    value: 50,
+    value: 24,
     message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
   },
   minLength: {
@@ -35,7 +38,7 @@ const EMAIL_SCHEMA = {
   },
   validate: {
     noSpace: (value) =>
-      value.trim().includes(' ') === false || 'Your password must not contain spaces!',
+      value.trim().includes(' ') === false || 'Email не должен содержать пробелов',
   },
 };
 
@@ -50,14 +53,16 @@ const Authorization = (props) => {
     mode: 'onChange',
   });
 
+  const dispatch = useDispatch();
+
   const onClickLogin = (data) => {
     if (isValid) {
       console.log(`Вход в аккаунт ${JSON.stringify(data)}`);
-      //логика для обработки ошибки от бэка
-      //кладём в setErrorResponse("Неправильный email или пароль")
+      props.authorization(data);
     }
     reset();
   };
+
   return (
     <div className="form">
       <div className="form__logo" />
@@ -84,16 +89,16 @@ const Authorization = (props) => {
               validationSchema={PASSWORD_SCHEMA}
             />
             {/* <p className="error-response-text">errorResponse Неправильный email или пароль</p> */}
-            <p className="form__remember-btn" onClick={() => props.setFormToStart(3)}>
+            <p className="form__remember-btn" onClick={() => dispatch(setStep('reset'))}>
               Не помню пароль
             </p>
-            <InputBtn disabled={!isValid} type="submit" value="Войти" />
+            <InputBtn disabled={!isValid || props.isLoading} type="submit" value="Войти" />
           </form>
         </div>
         <QuestionBlock
-          text="Еще нет аккаунта. "
+          text="Еще нет аккаунта."
           textBtn="Создать аккаунт"
-          onClick={() => props.setFormToStart(4)}
+          onClick={() => dispatch(setStep('reg'))}
         />
       </div>
     </div>

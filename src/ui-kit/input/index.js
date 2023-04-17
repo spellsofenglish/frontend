@@ -67,6 +67,9 @@ const InputForm = ({
       {errors && errors[name]?.type === 'passwordCorrection' && (
         <span className="error">{errors[name]?.message}</span>
       )}
+      {errors && errors[name]?.type === 'passwordCorrectionLength' && (
+        <span className="error">{errors[name]?.message}</span>
+      )}
     </div>
   );
 };

@@ -9,4 +9,4 @@ export const HTTP_STATUS = {
   ERRORS_LIST: { 409: 409, 400: 400, 403: 403 },
 };
 
-export const URL = 'https://apiv4.updateparishdata.org/';
+export const URL = 'https://spells.hedgi.ru/api/v0.0.1';

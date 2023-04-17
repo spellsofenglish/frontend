@@ -3,31 +3,35 @@
  */
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import './styles.scss';
 
 import { Start, Authorization, NewPassword, SendEmail, Registration } from './forms/index';
 
 const MainView = (props) => {
+  const step = useSelector((state) => state.form.step);
+
   const renderForm = (state) => {
     switch (state) {
-      case 0:
-        return <Start setFormToStart={props.setFormToStart} />;
-      case 1:
-        return <Authorization setFormToStart={props.setFormToStart} />;
-      case 2:
-        return <NewPassword setFormToStart={props.setFormToStart} />;
-      case 3:
-        return <SendEmail setFormToStart={props.setFormToStart} />;
-      case 4:
-        return <Registration setFormToStart={props.setFormToStart} />;
+      case 'start':
+        return <Start />;
+      case 'auth':
+        return <Authorization authorization={props.authorization} isLoading={props.isLoading} />;
+      case 'new_password':
+        return <NewPassword isLoading={props.isLoading} />;
+      case 'reset':
+        return <SendEmail isLoading={props.isLoading} changePassword={props.changePassword} />;
+      case 'reg':
+        return <Registration createUser={props.createUser} isLoading={props.isLoading} />;
       default:
         return null;
     }
   };
+
   return (
     <div id="--main-page">
-      <div className="container">{renderForm(props.formToStart)}</div>
+      <div className="container">{renderForm(step)}</div>
     </div>
   );
 };

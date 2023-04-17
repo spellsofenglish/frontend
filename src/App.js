@@ -9,12 +9,15 @@ import './styles.scss';
 
 import { MainPage } from './pages/index';
 import { PoliticsPage } from './pages/PoliticsPage';
+import { MainMenu } from './pages/MainMenu';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/politics" element={<PoliticsPage />} />
+      <Route path="/auth" element={<MainPage isAuth={true} />} />
+      <Route path="/menu" element={<MainMenu />} />
     </Routes>
   );
 }

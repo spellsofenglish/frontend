@@ -4,13 +4,16 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
 
 const NEW_PASSWORD_SCHEMA = {
   required: 'Поле обязательно для заполнения',
   maxLength: {
-    value: 50,
+    value: 24,
     message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
   },
   minLength: {
@@ -35,6 +38,7 @@ const NewPassword = (props) => {
   });
 
   const watchPassword = watch('password');
+  const dispatch = useDispatch();
 
   const PASSWORD_SCHEMA = {
     required: 'Поле обязательно для заполнения',
@@ -79,13 +83,13 @@ const NewPassword = (props) => {
               register={register}
               validationSchema={PASSWORD_SCHEMA}
             />
-            <InputBtn disabled={!isValid} value="Сохранить и начать игру" />
+            <InputBtn disabled={!isValid || props.isLoading} value="Сохранить и начать игру" />
           </form>
         </div>
         <QuestionBlock
           text="У меня уже есть аккаунт."
           textBtn="Войти в аккаунт"
-          onClick={() => props.setFormToStart(1)}
+          onClick={() => dispatch(setStep('auth'))}
         />
       </div>
     </div>

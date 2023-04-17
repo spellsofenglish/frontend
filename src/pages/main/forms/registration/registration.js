@@ -5,6 +5,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+
+import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
 
@@ -31,14 +34,15 @@ const EMAIL_SCHEMA = {
     message: 'Формат email неверный',
   },
   validate: {
-    noSpace: (value) => value.trim().includes(' ') === false || 'Формат email неверный',
+    noSpace: (value) =>
+      value.trim().includes(' ') === false || 'Email не должен содержать пробелов',
   },
 };
 
 const PASSWORD_SCHEMA = {
   required: 'Поле обязательно для заполнения',
   maxLength: {
-    value: 50,
+    value: 24,
     message: 'Пароль должен содержать от 8 до 24 латинских букв, цифр или символов',
   },
   minLength: {
@@ -62,9 +66,9 @@ const Registration = (props) => {
     mode: 'onChange',
   });
 
-  const watchPassword = watch(['password', 'repeat-password']);
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const watchPassword = watch(['password', 'repeat-password']);
 
   const REPEATE_PASSWORD_SCHEMA = {
     required: 'Поле обязательно для заполнения',
@@ -74,15 +78,19 @@ const Registration = (props) => {
     },
   };
 
-  const onClickRegistration = (data) => {
-    if (isValid) {
-      console.log(`отправлена ${JSON.stringify(data)}`);
-    }
+  const onClickRegistration = async (data) => {
+    const body = {
+      email: data.email,
+      nickName: data.name,
+      password: data.password,
+    };
+
+    await props.createUser(body);
+
     reset();
   };
 
   const openModal = () => {
-    console.log('Открытие модального окна - Пользовательское соглашение');
     navigate('/politics');
   };
 
@@ -129,7 +137,7 @@ const Registration = (props) => {
               register={register}
               validationSchema={REPEATE_PASSWORD_SCHEMA}
             />
-            <InputBtn value="Создать аккаунт" disabled={isValid ? false : true} />
+            <InputBtn value="Создать аккаунт" disabled={!isValid || props.isLoading} />
           </form>
           <div className="form__contract">
             <p className="form__contract-text">
@@ -143,7 +151,7 @@ const Registration = (props) => {
         <QuestionBlock
           text="У меня уже есть аккаунт. "
           textBtn="Войти в аккаунт"
-          onClick={() => props.setFormToStart(1)}
+          onClick={() => dispatch(setStep('auth'))}
         />
       </div>
     </div>
