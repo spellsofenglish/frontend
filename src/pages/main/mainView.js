@@ -21,9 +21,23 @@ const MainView = (props) => {
       case 'new_password':
         return <NewPassword isLoading={props.isLoading} />;
       case 'reset':
-        return <SendEmail isLoading={props.isLoading} changePassword={props.changePassword} />;
+        return (
+          <SendEmail
+            isLoading={props.isLoading}
+            changePassword={props.changePassword}
+            modalActive={props.modalActive}
+            setModalActive={props.setModalActive}
+          />
+        );
       case 'reg':
-        return <Registration createUser={props.createUser} isLoading={props.isLoading} />;
+        return (
+          <Registration
+            createUser={props.createUser}
+            isLoading={props.isLoading}
+            modalActive={props.modalActive}
+            setModalActive={props.setModalActive}
+          />
+        );
       default:
         return null;
     }

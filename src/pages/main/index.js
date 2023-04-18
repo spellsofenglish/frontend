@@ -15,6 +15,7 @@ import MainView from '../main/mainView';
 
 const MainPage = (props) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,6 +69,8 @@ const MainPage = (props) => {
       setIsLoading={setIsLoading}
       isLoading={isLoading}
       changePassword={changePassword}
+      setModalActive={setModalActive}
+      modalActive={modalActive}
     />
   );
 };

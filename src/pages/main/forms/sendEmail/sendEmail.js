@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
-import { Modal } from '../../../../components/Modal';
+import { Modal } from '../../../../features/Modal';
 
 import letterImg from '../../../../assets/images/letter.png';
 
@@ -30,7 +30,6 @@ const EMAIL_SCHEMA = {
 };
 
 const SendEmail = (props) => {
-  const [modalActive, setModalActive] = useState(false);
   const [email, setEmail] = useState('');
 
   const {
@@ -71,30 +70,14 @@ const SendEmail = (props) => {
                 placeholder="Ivan@example.com"
                 errors={errors}
                 register={register}
-                validationSchema={{
-                  required: 'Поле обязательно для заполнения',
-                  maxLength: {
-                    value: 50,
-                    message: 'Email должен содержать не более 50 латинских букв, цифр или символов',
-                  },
-                  pattern: {
-                    value: /(^|\s+)[\w\-.]+@([\w-]+\.)+[\w-]{2,4}($|\s+)/,
-                    message: 'Формат email неверный',
-                  },
-                  validate: {
-                    noSpace: (value) =>
-                      value.trim().includes(' ') === false ||
-                      'Your password must not contain spaces!',
-                  },
-                }}
+                validationSchema={EMAIL_SCHEMA}
               />
               <InputBtn
                 disabled={!isValid}
                 type="submit"
                 value="Отправить ссылку"
                 onClick={() => {
-                  console.log(InputForm.value);
-                  setModalActive(true);
+                  props.setModalActive(true);
                 }}
               />
             </form>
@@ -102,11 +85,16 @@ const SendEmail = (props) => {
           <QuestionBlock
             text="У меня уже есть аккаунт. "
             textBtn="Войти в аккаунт"
-            onClick={() => props.setFormToStart(1)}
+            onClick={() => dispatch(setStep('auth'))}
           />
         </div>
       </div>
-      <Modal active={modalActive} setActive={setModalActive} src={letterImg} alt="letter">
+      <Modal
+        active={props.modalActive}
+        setActive={props.setModalActive}
+        src={letterImg}
+        alt="letter"
+      >
         <h2>Ссылка отправлена</h2>
         <p>Мы отправили ссылку на восстановление пароля на {email}.</p>
         <p>Cледуй инструкциям письма и ты быстро вернешься в игру!</p>
