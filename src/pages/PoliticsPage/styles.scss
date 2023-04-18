@@ -1,7 +1,6 @@
 .background__politics {
   background: #1D1C2B;
   padding-bottom: 78px;
-  color: rgb(255, 255, 255);
 
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
@@ -23,26 +22,50 @@
     margin: 0 120px;
   }
 
-  .button__politics {
+  .button__politics-background {
+    margin: 16px 0;
     width: 48px;
     height: 48px;
-    margin: 16px 0;
-    background: $dark-blue;
-    box-shadow: inset 0 6px 4px rgba(255, 255, 255, 0.25);
     border-radius: 6px;
+    background: linear-gradient(180deg, #FFBC56 0%, #AD4202 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .button__politics {
+      width: 46px;
+      height: 46px;
+      border-radius: inherit;
+      border: none;
+      background: $dark-blue no-repeat center;
+      box-shadow: inset 0 6px 4px rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+    }
+
+    &:hover {
+      transition: all .3s linear;
+      background: linear-gradient(180deg, #FF9356 0%, #AD4202 100%);
+
+      .button__politics {
+        transition: all .3s linear;
+        box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &:active {
+      transition: all .1s linear;
+      background:#AD4202;
+
+      .button__politics {
+        transition: all .1s linear;
+        box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
+      }
+    }
   }
 
-  .home {
-    background: url("../../assets/svg/home.svg") no-repeat center;
-  }
-
-  .rules {
-    background: url("../../assets/svg/rules.svg") no-repeat center;
-  }
-
-  .back {
+  .button__back {
     margin: 32px 0 24px 120px;
-    background: url("../../assets/svg/back.svg") no-repeat center;
   }
 
   .politics {
@@ -67,14 +90,14 @@
     width: 950px;
 
     h2, p {
-    text-align: left;
-    margin-top: 24px;
-    font-family: $font-style;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: $dark-blue;
+      text-align: left;
+      margin-top: 24px;
+      font-family: $font-style;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: $dark-blue;
     }
 
     .close {
