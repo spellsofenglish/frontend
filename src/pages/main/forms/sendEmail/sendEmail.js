@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
-import { Modal } from '../../../../features/Modal';
+import { Modal } from '../../../../components/Modal';
 
 import letterImg from '../../../../assets/images/letter.png';
 
@@ -32,7 +32,7 @@ const EMAIL_SCHEMA = {
 const SendEmail = (props) => {
   const [modalActive, setModalActive] = useState(false);
   const [email, setEmail] = useState('');
-    
+
   const {
     register,
     formState: { errors, isValid },
@@ -41,7 +41,7 @@ const SendEmail = (props) => {
   } = useForm({
     mode: 'onChange',
   });
-  
+
   const dispatch = useDispatch();
 
   const onClickSendEmail = (data) => {
