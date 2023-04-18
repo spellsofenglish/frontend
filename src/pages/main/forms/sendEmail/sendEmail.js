@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
-import { Modal } from '../../../../features/Modal';
+import { Modal } from '../../../../components/Modal';
 
 import letterImg from '../../../../assets/images/letter.png';
 
