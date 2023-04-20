@@ -2,7 +2,7 @@
  * @prettier
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -21,7 +21,7 @@ const NAME_SCHEMA = {
     message: 'Имя должно содержать не более 50 латинских букв или цифр',
   },
   pattern: {
-    value: /^[A-Za-z0-9]+$/g,
+    value: /^[A-Za-z 0-9]+$/g,
     message: 'Имя должно содержать латинские буквы или цифры',
   },
 };
@@ -33,7 +33,7 @@ const EMAIL_SCHEMA = {
     message: 'Email должен содержать не более 50 латинских букв, цифр или символов',
   },
   pattern: {
-    value: /(^|\s+)[\w\-.]+@([\w-]+\.)+[\w-]{2,4}($|\s+)/,
+    value: /(^|\s+)[\w\-+.]+@([\w-+]+\.)+[\w]{2,4}($|\s+)/,
     message: 'Формат email неверный',
   },
   validate: {
@@ -67,29 +67,33 @@ const Registration = (props) => {
     handleSubmit,
     reset,
     watch,
+    trigger,
   } = useForm({
     mode: 'onChange',
   });
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const watchPassword = watch(['password', 'repeat-password']);
+  const watchPassword = watch('password');
+  const watchRepeatPassword = watch('repeat-password');
+  useEffect(() => {
+    trigger('repeat-password');
+  }, [watchPassword, watchRepeatPassword, trigger]);
 
   const REPEATE_PASSWORD_SCHEMA = {
-    required: 'Поле обязательно для заполнения',
     validate: {
       passwordCorrection: (value) =>
-        value.toString() === watchPassword[0].toString() || 'Пароли не совпадают',
+        value.toString() === watchPassword.toString() || 'Пароли не совпадают',
+      passwordCorrectionLength: (value) => value.length !== 0 || 'Поле обязательно для заполнения',
     },
   };
 
   const onClickRegistration = async (data) => {
     const body = {
       email: data.email,
-      nickName: data.name,
+      nickName: data.name.trim(),
       password: data.password,
     };
-
     props.setModalActive(true);
     setEmail(data.email);
 

@@ -33,7 +33,8 @@
     border: 1px solid #EC840A;
   }
 
-  input[type="password"] {
+  input[name="repeat-password"],
+  input[name="password"] {
     padding-right: 40px;
   }
 
