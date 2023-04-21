@@ -36,7 +36,6 @@ export default class UsersService {
   }
   //credentials
   static async authorization(data) {
-    console.log(window.document.cookie);
     try {
       const request = await api.post(`${URL}${this.API_ENDPOINTS.authorization}`, {
         headers: {
