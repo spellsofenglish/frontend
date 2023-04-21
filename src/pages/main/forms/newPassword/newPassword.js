@@ -50,7 +50,15 @@ const NewPassword = (props) => {
 
   const onClickNewPassword = (data) => {
     if (isValid) {
-      console.log(`отправлена ${JSON.stringify(data)}`);
+      const pathname = window.location.href;
+      const userId = Number(pathname.split('?').at(-1));
+
+      const requestBody = {
+        newPassword: data.password,
+        id: userId,
+      };
+
+      props.resetPassword(requestBody);
     }
     reset();
   };
