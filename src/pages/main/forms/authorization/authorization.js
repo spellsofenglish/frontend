@@ -56,10 +56,8 @@ const Authorization = (props) => {
   const dispatch = useDispatch();
 
   const onClickLogin = (data) => {
-    if (isValid) {
-      console.log(`Вход в аккаунт ${JSON.stringify(data)}`);
-      props.authorization(data);
-    }
+    props.authorization(data);
+
     reset();
   };
 
@@ -89,7 +87,7 @@ const Authorization = (props) => {
               validationSchema={PASSWORD_SCHEMA}
             />
             {/* <p className="error-response-text">errorResponse Неправильный email или пароль</p> */}
-            <p className="form__remember-btn" onClick={() => dispatch(setStep('reset'))}>
+            <p className="form__remember-btn" onClick={() => dispatch(setStep('new_password'))}>
               Не помню пароль
             </p>
             <InputBtn disabled={!isValid || props.isLoading} type="submit" value="Войти" />
