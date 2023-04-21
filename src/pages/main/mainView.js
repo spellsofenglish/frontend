@@ -18,9 +18,9 @@ const MainView = (props) => {
         return <Start />;
       case 'auth':
         return <Authorization authorization={props.authorization} isLoading={props.isLoading} />;
-      case 'new_password':
-        return <NewPassword isLoading={props.isLoading} />;
       case 'reset':
+        return <NewPassword isLoading={props.isLoading} resetPassword={props.resetPassword} />;
+      case 'new_password':
         return (
           <SendEmail
             isLoading={props.isLoading}

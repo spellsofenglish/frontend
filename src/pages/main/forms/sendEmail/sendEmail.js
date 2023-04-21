@@ -44,11 +44,9 @@ const SendEmail = (props) => {
   const dispatch = useDispatch();
 
   const onClickSendEmail = (data) => {
-    if (isValid) {
-      props.changePassword(data);
-      setEmail(data.email);
-      console.log(`отправлена ${JSON.stringify(data)}`);
-    }
+    props.changePassword(data);
+    setEmail(data.email);
+
     reset();
   };
 

@@ -24,6 +24,9 @@ const MainPage = (props) => {
     if (props.isAuth) {
       dispatch(setStep('auth'));
     }
+    if (props.isReset) {
+      dispatch(setStep('reset'));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -62,6 +65,16 @@ const MainPage = (props) => {
     setIsLoading(false);
   };
 
+  const resetPassword = async (data) => {
+    setIsLoading(true);
+    try {
+      await UsersService.resetPassword(data);
+    } catch {
+      return Promise.reject();
+    }
+    setIsLoading(false);
+  };
+
   return (
     <MainView
       createUser={createUser}
@@ -71,16 +84,19 @@ const MainPage = (props) => {
       changePassword={changePassword}
       setModalActive={setModalActive}
       modalActive={modalActive}
+      resetPassword={resetPassword}
     />
   );
 };
 
 MainPage.propTypes = {
   isAuth: PropTypes.bool,
+  isRest: PropTypes.bool,
 };
 
 MainPage.defaultProps = {
   isAuth: PropTypes.false,
+  isRest: PropTypes.false,
 };
 
 export default MainPage;
