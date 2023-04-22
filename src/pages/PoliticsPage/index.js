@@ -2,15 +2,18 @@
  * @prettier
  */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './styles.scss';
 
 import { Button, Icon } from '../../ui-kit';
+import { RulesContext } from '../../App';
+import ModalGameRules from '../../components/ModalGameRules';
 
 export const PoliticsPage = () => {
   const navigate = useNavigate();
+  const { activeRules, setActiveRules } = useContext(RulesContext);
 
   return (
     <>
@@ -23,7 +26,12 @@ export const PoliticsPage = () => {
               </button>
             </div>
             <div className="button__politics-background">
-              <button className="button__politics">
+              <button
+                className="button__politics"
+                onClick={() => {
+                  setActiveRules(!activeRules);
+                }}
+              >
                 <Icon name="rules" width="24px" height="24px" fill="#EC840A" />
               </button>
             </div>
@@ -460,6 +468,7 @@ export const PoliticsPage = () => {
           </section>
         </article>
       </div>
+      <ModalGameRules />
     </>
   );
 };
