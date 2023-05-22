@@ -25,6 +25,7 @@ function App() {
         <Route path="/politics" element={<PoliticsPage />} />
         <Route path="/auth" element={<MainPage isAuth={true} />} />
         <Route path="/menu" element={<MainMenu />} />
+        <Route path="/reset" element={<MainMenu isReset={true} />} />
       </Routes>
     </RulesContext.Provider>
   );
