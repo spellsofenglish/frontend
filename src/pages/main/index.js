@@ -46,11 +46,11 @@ const MainPage = (props) => {
       const user = await UsersService.authorization(data);
       dispatch(setAuthData(user));
       if (user.id) {
-        // может ли быть ноль
+        navigate(-1);
         navigate('menu');
       }
-    } catch {
-      return Promise.reject();
+    } catch (error) {
+      //return Promise.reject(error);
     }
     setIsLoading(false);
   };
