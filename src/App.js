@@ -3,7 +3,7 @@
  */
 
 import React, { createContext, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import './styles.scss';
 
@@ -26,6 +26,7 @@ function App() {
         <Route path="/auth" element={<MainPage isAuth={true} />} />
         <Route path="/menu" element={<MainMenu />} />
         <Route path="/reset" element={<MainPage isReset={true} />} />
+        <Route path="/auth/menu" element={<Navigate to="/menu" />} />
       </Routes>
     </RulesContext.Provider>
   );
