@@ -27,6 +27,7 @@ function App() {
         <Route path="/menu" element={<MainMenu />} />
         <Route path="/reset" element={<MainPage isReset={true} />} />
         <Route path="/auth/menu" element={<Navigate to="/menu" />} />
+        <Route path="/reset/menu" element={<Navigate to="/auth" />} />
       </Routes>
     </RulesContext.Provider>
   );
