@@ -46,7 +46,6 @@ const MainPage = (props) => {
       const user = await UsersService.authorization(data);
       dispatch(setAuthData(user));
       if (user.id) {
-        navigate(-1);
         navigate('menu');
       }
     } catch (error) {
