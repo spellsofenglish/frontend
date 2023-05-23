@@ -68,6 +68,7 @@ const MainPage = (props) => {
     setIsLoading(true);
     try {
       await UsersService.resetPassword(data);
+      dispatch(setStep('auth'));
     } catch {
       return Promise.reject();
     }
