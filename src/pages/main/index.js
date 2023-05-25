@@ -24,10 +24,10 @@ const MainPage = (props) => {
   useEffect(() => {
     if (props.isAuth) {
       dispatch(setStep('auth'));
+      dispatch(setInNewUserData(true));
     }
     if (props.isReset) {
       dispatch(setStep('reset'));
-      dispatch(setInNewUserData(true));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
