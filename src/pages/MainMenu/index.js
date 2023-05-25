@@ -2,18 +2,34 @@
  * @prettier
  */
 
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import './styles.scss';
 
 import { Button, Icon } from '../../ui-kit';
-import { RulesContext } from '../../App';
+//import { RulesContext } from '../../App';
 import ModalGameRules from '../../components/ModalGameRules';
 
 export const MainMenu = () => {
+  const [isRulesActive, setIsRulesActive] = useState();
+
   const navigate = useNavigate();
-  const { activeRules, setActiveRules } = useContext(RulesContext);
+
+  const isNewUser = useSelector((state) => state.isNewUser);
+  //const { activeRules, setActiveRules } = useContext(RulesContext);
+
+  console.log(isNewUser);
+
+  const showModal = () => setIsRulesActive(!isRulesActive);
+
+  useEffect(() => {
+    if (isNewUser) {
+      showModal();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -28,18 +44,13 @@ export const MainMenu = () => {
             <Button label="Выйти из игры" type="dark" size="auto" />
           </div>
           <div className="rules__menu-background">
-            <button
-              className="rules__menu"
-              onClick={() => {
-                setActiveRules(!activeRules);
-              }}
-            >
+            <button className="rules__menu" onClick={showModal}>
               <Icon name="rules" width="24px" height="24px" fill="#EC840A" />
             </button>
           </div>
         </div>
       </div>
-      <ModalGameRules />
+      <ModalGameRules isRulesActive={isRulesActive} onClose={showModal} />
     </>
   );
 };

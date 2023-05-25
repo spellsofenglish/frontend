@@ -2,19 +2,19 @@
  * @prettier
  */
 
-import React, { useContext } from 'react';
+import React from 'react';
 
 import './styles.scss';
 
 import { Icon } from '../../ui-kit';
-import { RulesContext } from '../../App';
+//import { RulesContext } from '../../App';
 
-const ModalGameRules = () => {
-  const { activeRules, setActiveRules } = useContext(RulesContext);
+const ModalGameRules = (props) => {
+  //const { activeRules, setActiveRules } = useContext(RulesContext);
   return (
-    <div className={activeRules ? 'modal-page' : null}>
-      <div className={activeRules ? 'modal-page__back active' : 'modal-page__back'}>
-        <div className={activeRules ? 'modal-page__block' : null}>
+    <div className={props.isRulesActive ? 'modal-page' : null}>
+      <div className={props.isRulesActive ? 'modal-page__back active' : 'modal-page__back'}>
+        <div className={props.isRulesActive ? 'modal-page__block' : null}>
           <section className="content">
             <h2>Правила игры Spells of English</h2>
             <div className="content__block">
@@ -64,12 +64,7 @@ const ModalGameRules = () => {
               </ul>
             </div>
           </section>
-          <div
-            className="btn-back"
-            onClick={() => {
-              setActiveRules(!activeRules);
-            }}
-          >
+          <div className="btn-back" onClick={props.onClose}>
             <button className="btn">
               <Icon name="cross" />
             </button>

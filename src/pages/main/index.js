@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import UsersService from '../../services/users';
 import { setStep } from '../../features/form/formSlice';
 import { setAuthData } from '../../features/user/userResponseSlice';
+import { setInNewUserData } from '../../features/user/isNewUserSlice';
 
 import MainView from '../main/mainView';
 
@@ -26,6 +27,7 @@ const MainPage = (props) => {
     }
     if (props.isReset) {
       dispatch(setStep('reset'));
+      dispatch(setInNewUserData(true));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -44,6 +46,7 @@ const MainPage = (props) => {
     setIsLoading(true);
     try {
       const user = await UsersService.authorization(data);
+      console.log(user);
       dispatch(setAuthData(user));
       if (user.id) {
         navigate('menu');
