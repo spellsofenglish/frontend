@@ -13,7 +13,7 @@ import { Button, Icon } from '../../ui-kit';
 import ModalGameRules from '../../components/ModalGameRules';
 
 export const MainMenu = () => {
-  const [isRulesActive, setIsRulesActive] = useState();
+  const [isRulesActive, setIsRulesActive] = useState(false);
 
   const navigate = useNavigate();
 

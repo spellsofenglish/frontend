@@ -12,7 +12,7 @@ import { Button, Icon } from '../../ui-kit';
 import ModalGameRules from '../../components/ModalGameRules';
 
 export const PoliticsPage = () => {
-  const [isRulesActive, setIsRulesActive] = useState();
+  const [isRulesActive, setIsRulesActive] = useState(false);
 
   const navigate = useNavigate();
   //const { activeRules, setActiveRules } = useContext(RulesContext);
