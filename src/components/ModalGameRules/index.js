@@ -40,7 +40,8 @@ const ModalGameRules = (props) => {
               <h3 className="content__title">3. Описание игры</h3>
               <p className="content__text">
                 Игра представлена в виде игрового поля с клетками от 1 до 48. Каждая игровая клетка
-                - новое задание. У каждого задания - свой цвет. Чтобы продвинуться по полю, бр
+                - новое задание. У каждого задания - свой цвет. Чтобы продвинуться по полю, брось
+                два игровых кубика.
               </p>
             </div>
             <div className="content__block">
@@ -49,19 +50,39 @@ const ModalGameRules = (props) => {
             <div className="content__block">
               <h3 className="content__title">5. Детальное описание этапов хода</h3>
               <p className="content__text">
+                Игрок бросает кости и продвигается по игровому полю вперед в соответствии с выпавшей
+                цифрой: от 2 до 12 шагов. На каждой игровой клетке - уникальное задание:
+              </p>
+              <p className="content__text">
+                Аудио: прослушай аудио и выбери из списка слово, которое ты услышал.
+              </p>
+              <p className="content__text">
+                Картинка: на экране ты увидишь картинку и под ней текст с пропущенным словом. На
+                картинке изображено пропущенное слово.
+              </p>
+              <p className="content__text">
+                Например: На картинке sunglasses, а снизу текст I want to buy ____. Слово sunglasses
+                разобрано на буквы в хаотичном порядке. Собери буквы, чтобы получилось слово с
+                картинки.
+              </p>
+              <p className="content__text">У тебя есть две минуты, чтобы выполнить задание.</p>
+            </div>
+            <div className="content__block">
+              <h3 className="content__title">6. Условия окончания игры и победы.</h3>
+              <p className="content__text">
                 Игрок начинает игру с депозитом в 50 баллов. За каждое выполненное задание ты
                 получаешь +10 баллов, за каждое проигранное задание - 5 баллов.
               </p>
             </div>
             <div className="content__block">
-              <h3 className="content__title">6. TEST</h3>
-              <p className="content__text">test test test test test test :</p>
-              <ul className="content__list">
-                <li>test test test </li>
-                <li>test test </li>
-                <li>test test test test test </li>
-                <li>test test test test test test test test test </li>
-              </ul>
+              <h3 className="content__title">
+                7. Благодарности (тем кто участвовал в тестировании, помогал советами и т. д.)
+              </h3>
+            </div>
+            <div className="content__block">
+              <h3 className="content__title">
+                8. Дополнительные правила, FAQ (часто задаваемые вопросы), советы по стратегии…
+              </h3>
             </div>
           </section>
           <div className="btn-back" onClick={props.onClose}>
