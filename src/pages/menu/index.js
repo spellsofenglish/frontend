@@ -12,7 +12,7 @@ import { Button, Icon } from '../../ui-kit';
 //import { RulesContext } from '../../App';
 import ModalGameRules from '../../components/ModalGameRules';
 
-export const MainMenu = () => {
+const Menu = () => {
   const [isRulesActive, setIsRulesActive] = useState(false);
 
   const navigate = useNavigate();
@@ -48,9 +48,16 @@ export const MainMenu = () => {
               <Icon name="rules" width="24px" height="24px" fill="#EC840A" />
             </button>
           </div>
+          <div className="rules__menu-background">
+            <button className="rules__menu" onClick={() => navigate('/storybook')}>
+              <Icon name="storybook" width="30px" height="30px" fill="#EC840A" />
+            </button>
+          </div>
         </div>
       </div>
       <ModalGameRules isRulesActive={isRulesActive} onClose={showModal} />
     </>
   );
 };
+
+export default Menu;

@@ -1,3 +1,6 @@
-import MainPage from './main/index';
+import Menu from './menu';
+import Authorization from './authorization';
+import Storybook from './storybook';
+import Politics from './politics';
 
-export { MainPage };
+export { Menu, Authorization, Storybook, Politics };

@@ -12,9 +12,9 @@ import { setStep } from '../../features/form/formSlice';
 import { setAuthData } from '../../features/user/userResponseSlice';
 import { setInNewUserData } from '../../features/user/isNewUserSlice';
 
-import MainView from '../main/mainView';
+import MainView from './authorisation-view';
 
-const MainPage = (props) => {
+const Authorization = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [modalActive, setModalActive] = useState(false);
 
@@ -92,14 +92,14 @@ const MainPage = (props) => {
   );
 };
 
-MainPage.propTypes = {
+Authorization.propTypes = {
   isAuth: PropTypes.bool,
   isRest: PropTypes.bool,
 };
 
-MainPage.defaultProps = {
+Authorization.defaultProps = {
   isAuth: PropTypes.false,
   isRest: PropTypes.false,
 };
 
-export default MainPage;
+export default Authorization;
