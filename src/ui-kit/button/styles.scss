@@ -1,67 +1,206 @@
 .button-root {
-  height: fit-content;
   border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-  outline: none;
-  border: none;
   transition: 0.2s;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  height: 48px;
+  padding: 1px;
+  width: 100%;
+
+  > button {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 6px;
+    outline: none;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 24px;
+
+    span {
+      line-height: 46px;
+      display: block;
+    }
+
+    svg {
+      line-height: 48px;
+      margin-top: 10px;
+    }
+  }
 
   &.default {
-    background: linear-gradient(180deg, #EC840A 0%, #D75E07 100%);
-    padding: 0 32px;
+    background: linear-gradient(180deg, #FFBC56 0%, #AD4202 100%);
 
-    > span {
+    &:hover:not(.disabled) {
+      background: linear-gradient(180deg, #FF9356 0%, #AD4202 100%);
+
+      button {
+        background: linear-gradient(180deg, #E2660C 0%, #D75207 100%);
+        box-shadow: inset 0px 2px 4px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &:active:not(.disabled) {
+      background: #7E3718;
+
+      button {
+        background: #D75207;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+    }
+  
+    button {
+      background: linear-gradient(180deg, #EC840A 0%, #D75E07 100%);
+      box-shadow: inset 0px 6px 4px rgba(255, 255, 255, 0.25);
+    }
+
+    span {
       color: white;
       font-size: 16px;
     }
-  }
 
-  &.outlined {
-    background: linear-gradient(180deg, #EC840A 0%, #D75E07 100%);
-    box-shadow: inset 0 6px 4px rgba(255, 255, 255, 0.25);
-    padding: 0 24px;
+    &.disabled {
+      background: #7E3718;
 
-    > span {
-      color: white;
-      font-size: 16px;
+      span {
+        opacity: 0.3;
+      }
+
+      svg {
+        opacity: 0.3;
+      }
+
+      button:disabled {
+        background: #7E3718;
+        box-shadow: none;
+  
+        &:hover {
+          cursor: auto;
+        }
+      }
     }
   }
 
-  &.auto {
-    height: 48px;
-    width: auto;
-    font-weight: 600;
-    padding: 0 32.5px;
+  &.blue {
+    background: linear-gradient(180deg, #459DFC 0%, #071A7A 100%);
+
+    &:hover:not(.disabled) {
+      button {
+        background: linear-gradient(180deg, #096BC5 0%, #054BB3 100%);
+        box-shadow: inset 0px 2px 4px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &:active:not(.disabled) {
+      background: #071A7A;
+
+      button {
+        background: #054BB2;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+    }
+  
+    button {
+      background: linear-gradient(180deg, #0F8CFF 0%, #0C67D2 100%);
+      box-shadow: inset 0px 6px 4px rgba(255, 255, 255, 0.25);
+    }
+
+    span {
+      color: white;
+      font-size: 16px;
+    }
+
+    &.disabled {
+      background: #071A7A;
+
+      span {
+        opacity: 0.3;
+      }
+
+      button:disabled {
+        background: #043174;
+        box-shadow: none;
+  
+        &:hover {
+          cursor: auto;
+        }
+      }
+    }
   }
 
-  &.dark {
-    background: linear-gradient(0deg, #2A293D, #2A293D);
-    box-shadow: inset 0 6px 4px rgba(255, 255, 255, 0.25);
-    padding: 0 24px;
+  &.secondary {
+    background: linear-gradient(180deg, #FFBC56 0%, #AD4202 100%);
 
-    > span {
+    &:hover:not(.disabled) {
+      background: linear-gradient(180deg, #FF9356 0%, #AD4202 100%);
+      button {
+        box-shadow: inset 0px 2px 4px rgba(255, 255, 255, 0.2);
+      }
+
+      span {
+        color: #D75207;
+      }
+    }
+
+    &:active:not(.disabled) {
+      background: #AD4202;
+
+      button {
+        background: #2A293D;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      span {
+        color: #D75207;
+      }
+
+      svg {
+        fill: #D75207;
+      }
+    }
+  
+    button {
+      background: #2A293D;
+      box-shadow: inset 0px 6px 4px rgba(255, 255, 255, 0.25);
+    }
+
+    span {
       color: #EC840A;
       font-size: 16px;
     }
-  }
 
-  &.large {
-    height: 48px;
-    width: 400px;
-  }
+    &.disabled {
+      background: #7E3718;
 
-  &.medium {
-    height: 48px;
-    width: 118px;
-  }
+      button {
+        background-color: #2A293D;
+        box-shadow: none;
+      }
 
-  &.small {
-    height: 48px;
-    width: 48px;
+      span {
+        color: #7E3718;
+      }
+
+      button:disabled {
+        background: #2A293D;
+  
+        &:hover {
+          cursor: auto;
+        }
+      }
+    }
+
+    &.icon {
+      width: 48px;
+    }
   }
 }

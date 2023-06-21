@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 import './styles.scss';
 
-import { Button, Icon } from '../../ui-kit';
+import { Button } from '../../ui-kit';
 //import { RulesContext } from '../../App';
 import ModalGameRules from '../../components/ModalGameRules';
 
@@ -36,23 +36,23 @@ const Menu = () => {
       <div className="background__menu">
         <div className="logo__menu" />
         <div className="buttons__menu">
-          <Button label="Начать игру" type="outlined" size="auto" />
+          <div>
+            <Button label="Начать игру" type="default" />
+          </div>
           <div className="dark-button__background">
-            <Button label="Настройка профиля" type="dark" size="auto" />
+            <Button label="Настройка профиля" type="secondary" />
           </div>
           <div className="dark-button__background" onClick={() => navigate(-1)}>
-            <Button label="Выйти из игры" type="dark" size="auto" />
+            <Button label="Выйти из игры" type="secondary" />
           </div>
-          <div className="rules__menu-background">
-            <button className="rules__menu" onClick={showModal}>
-              <Icon name="rules" width="24px" height="24px" fill="#EC840A" />
-            </button>
+          <div>
+            <Button type="secondary" icon="rules" onClick={showModal} />
           </div>
-          <div className="rules__menu-background">
+          {/* <div className="rules__menu-background">
             <button className="rules__menu" onClick={() => navigate('/storybook')}>
               <Icon name="storybook" width="30px" height="30px" fill="#EC840A" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <ModalGameRules isRulesActive={isRulesActive} onClose={showModal} />

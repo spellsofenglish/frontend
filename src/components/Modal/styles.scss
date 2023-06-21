@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
 .background {
   position: absolute;
   top: 0;
@@ -33,9 +35,7 @@
     border: none;
   }
 
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-
-   font-family: 'Inter';
+   font-family: 'Inter', sans-serif;
    font-style: normal;
    color: #FFFFFF;
     text-align: left;

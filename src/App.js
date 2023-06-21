@@ -7,7 +7,12 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 
 import './styles.scss';
 
-import { Authorization, Politics, Menu, Storybook } from './pages';
+import {
+  Authorization,
+  Politics,
+  Menu,
+  //Storybook
+} from './pages';
 
 // export const RulesContext = createContext({
 //   active: false,
@@ -26,7 +31,7 @@ function App() {
       <Route path="/reset" element={<Authorization isReset={true} />} />
       <Route path="/auth/menu" element={<Navigate to="/menu" />} />
       <Route path="/reset/menu" element={<Navigate to="/menu" />} />
-      <Route path="/storybook" element={<Storybook />} />
+      {/* <Route path="/storybook" element={<Storybook />} /> */}
     </Routes>
     //</RulesContext.Provider>
   );
