@@ -9,6 +9,16 @@ import './styles.scss';
 
 import { Icon } from '../';
 
+const ERRORS_TYPES = [
+  'required',
+  'maxLength',
+  'minLength',
+  'pattern',
+  'noSpace',
+  'passwordCorrection',
+  'passwordCorrectionLength',
+];
+
 const InputForm = ({
   label,
   name,
@@ -49,25 +59,7 @@ const InputForm = ({
           </div>
         ) : null}
       </div>
-      {errors && errors[name]?.type === 'required' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'maxLength' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'minLength' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'pattern' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'noSpace' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'passwordCorrection' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'passwordCorrectionLength' && (
+      {errors && ERRORS_TYPES.includes(errors[name]?.type) && (
         <span className="error">{errors[name]?.message}</span>
       )}
     </div>

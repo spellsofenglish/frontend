@@ -4,6 +4,7 @@
   gap: 4px;
   width: 100%;
   padding-bottom: 16px;
+  background-color: transparent !important;
 
   label {
     font-weight: 500;
@@ -23,6 +24,7 @@
     border: 1px solid rgba(226, 235, 244, 0.25);
     border-radius: 6px;
     transition: all .3s linear;
+    background-color: transparent !important;
   }
 
   input:hover {
@@ -69,6 +71,6 @@
   input:hover.errorInput,
   input:focus.errorInput,
   .errorInput {
-    border: 1px solid #DF1616;
+    border: 1px solid #DF1616 !important;
   }
 }
