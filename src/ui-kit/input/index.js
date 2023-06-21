@@ -38,7 +38,7 @@ const InputForm = ({
 
   const togglePasswordEye = () => {
     setShowPasswordEye(!showPasswordEye);
-    showPasswordValue === 'text' ? setShowPasswordValue('password') : setShowPasswordValue('text');
+    setShowPasswordValue(showPasswordValue === 'text' ? 'password' : 'text');
   };
 
   return (
