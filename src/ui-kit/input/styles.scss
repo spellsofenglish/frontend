@@ -1,4 +1,4 @@
-.wrapper {
+.input-wrapper {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -20,12 +20,15 @@
     line-height: 20px;
     color: #FFFFFF;
     padding: 10px 12px;
-    background: rgba(226, 235, 244, 0.05);
+    background: rgba(226, 235, 244, 0.05) !important;
     border: 1px solid rgba(226, 235, 244, 0.25);
     border-radius: 6px;
     transition: all .3s linear;
-    background-color: transparent !important;
   }
+
+  input:-webkit-autofill {
+		transition: all 5000s ease-in-out;
+	}
 
   input:hover {
     border: 1px solid rgba(226, 235, 244, 0.5);
@@ -40,9 +43,10 @@
     padding-right: 40px;
   }
 
-  .input-block {
+  .input-holder {
     width: inherit;
     position: relative;
+    background-color: transparent;
   }
 
   .btn-toggle {

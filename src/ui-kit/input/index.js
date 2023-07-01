@@ -28,6 +28,9 @@ const InputForm = ({
   errors,
   required,
   validationSchema,
+  value,
+  //errorMessage,
+  //isValid,
 }) => {
   const [showPasswordEye, setShowPasswordEye] = useState(true);
   const [showPasswordValue, setShowPasswordValue] = useState(type);
@@ -42,9 +45,9 @@ const InputForm = ({
   };
 
   return (
-    <div className="wrapper">
+    <div className="input-wrapper">
       <label htmlFor={name}>{label}</label>
-      <div className="input-block">
+      <div className="input-holder">
         <input
           className={getInputClassName()}
           name={name}
@@ -52,6 +55,7 @@ const InputForm = ({
           placeholder={placeholder}
           required={required}
           {...register(name, validationSchema)}
+          value={value}
         />
         {name === 'password' || name === 'repeat-password' ? (
           <div className="btn-toggle" onClick={togglePasswordEye}>
@@ -62,6 +66,7 @@ const InputForm = ({
       {errors && ERRORS_TYPES.includes(errors[name]?.type) && (
         <span className="error">{errors[name]?.message}</span>
       )}
+      {/* {isValid && errorMessage && <span>{errorMessage}</span>} */}
     </div>
   );
 };
