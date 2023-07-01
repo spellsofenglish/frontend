@@ -76,6 +76,7 @@ const Authorization = (props) => {
               errors={errors}
               register={register}
               validationSchema={EMAIL_SCHEMA}
+              // errorMessage={'!!!!!!!!!!!!!!'}
             />
             <InputForm
               label="Пароль"
@@ -85,6 +86,7 @@ const Authorization = (props) => {
               errors={errors}
               register={register}
               validationSchema={PASSWORD_SCHEMA}
+              // errorMessage={'!!!!!!!!!!!!!!'}
             />
             {/* <p className="error-response-text">errorResponse Неправильный email или пароль</p> */}
             <p className="form__remember-btn" onClick={() => dispatch(setStep('new_password'))}>

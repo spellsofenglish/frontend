@@ -1,0 +1,33 @@
+.background__menu {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: url("../../assets/backgrounds/main_menu.png") no-repeat center;
+  background-size: cover;
+
+  .logo__menu {
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
+    background: url("../../assets/logo/logo_big.png");
+    width: 450px;
+    height: 286px;
+  }
+
+  .buttons__menu {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 120px;
+
+    > div:first-child, div:nth-child(3) {
+      width: 164px;
+    }
+
+    > div:nth-child(2) {
+      width: 210px;
+    }
+  }
+}

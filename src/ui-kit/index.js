@@ -4,5 +4,6 @@ import TitleForm from './title';
 import InputForm from './input';
 import InputBtn from './input-btn';
 import Icon from './icon';
+import Block from './block';
 
-export { Button, QuestionBlock, TitleForm, InputForm, InputBtn, Icon };
+export { Button, QuestionBlock, TitleForm, InputForm, InputBtn, Icon, Block };

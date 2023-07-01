@@ -9,6 +9,16 @@ import './styles.scss';
 
 import { Icon } from '../';
 
+const ERRORS_TYPES = [
+  'required',
+  'maxLength',
+  'minLength',
+  'pattern',
+  'noSpace',
+  'passwordCorrection',
+  'passwordCorrectionLength',
+];
+
 const InputForm = ({
   label,
   name,
@@ -18,6 +28,9 @@ const InputForm = ({
   errors,
   required,
   validationSchema,
+  value,
+  //errorMessage,
+  //isValid,
 }) => {
   const [showPasswordEye, setShowPasswordEye] = useState(true);
   const [showPasswordValue, setShowPasswordValue] = useState(type);
@@ -28,13 +41,13 @@ const InputForm = ({
 
   const togglePasswordEye = () => {
     setShowPasswordEye(!showPasswordEye);
-    showPasswordValue === 'text' ? setShowPasswordValue('password') : setShowPasswordValue('text');
+    setShowPasswordValue(showPasswordValue === 'text' ? 'password' : 'text');
   };
 
   return (
-    <div className="wrapper">
+    <div className="input-wrapper">
       <label htmlFor={name}>{label}</label>
-      <div className="input-block">
+      <div className="input-holder">
         <input
           className={getInputClassName()}
           name={name}
@@ -42,6 +55,7 @@ const InputForm = ({
           placeholder={placeholder}
           required={required}
           {...register(name, validationSchema)}
+          value={value}
         />
         {name === 'password' || name === 'repeat-password' ? (
           <div className="btn-toggle" onClick={togglePasswordEye}>
@@ -49,27 +63,10 @@ const InputForm = ({
           </div>
         ) : null}
       </div>
-      {errors && errors[name]?.type === 'required' && (
+      {errors && ERRORS_TYPES.includes(errors[name]?.type) && (
         <span className="error">{errors[name]?.message}</span>
       )}
-      {errors && errors[name]?.type === 'maxLength' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'minLength' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'pattern' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'noSpace' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'passwordCorrection' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
-      {errors && errors[name]?.type === 'passwordCorrectionLength' && (
-        <span className="error">{errors[name]?.message}</span>
-      )}
+      {/* {isValid && errorMessage && <span>{errorMessage}</span>} */}
     </div>
   );
 };

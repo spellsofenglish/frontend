@@ -11,7 +11,7 @@ import { Button, Icon } from '../../ui-kit';
 //import { RulesContext } from '../../App';
 import ModalGameRules from '../../components/ModalGameRules';
 
-export const PoliticsPage = () => {
+const Politics = () => {
   const [isRulesActive, setIsRulesActive] = useState(false);
 
   const navigate = useNavigate();
@@ -471,3 +471,5 @@ export const PoliticsPage = () => {
     </>
   );
 };
+
+export default Politics;
