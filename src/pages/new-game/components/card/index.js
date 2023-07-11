@@ -30,11 +30,7 @@ const GameCard = (props) => {
             <h3>{GAME_TYPES[props.type].title}</h3>
             <p>{GAME_TYPES[props.type].text}</p>
           </div>
-          {props.type === 'team' && (
-            <div>
-              <div></div>
-            </div>
-          )}
+          {props.type === 'team' && <div />}
         </div>
       </div>
     </div>
