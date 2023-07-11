@@ -18,11 +18,28 @@ const GAME_TYPES = {
 };
 
 const GameCard = (props) => {
+  const renderClassName = () => {
+    let str = 'gamecard';
+
+    str += props.type === 'single' ? ' selected' : ' disabled';
+
+    // do not delete
+    // if (props.gameType) {
+    //   str += props.gameType === props?.type ? ' selected' : ' disabled';
+    // }
+
+    return str;
+  };
+
+  const selectType = () => {
+    if (props?.type !== 'single') {
+      return;
+    }
+    props.onClick(props?.type);
+  };
+
   return (
-    <div
-      className={`gamecard ${props.gameType === props?.type ? 'selected' : ''}`}
-      onClick={() => props.onClick(props?.type)}
-    >
+    <div className={renderClassName()} onClick={selectType}>
       <div>
         <div className={props?.type ? props.type : ''} />
         <div className="game-description">
@@ -33,6 +50,7 @@ const GameCard = (props) => {
           {props.type === 'team' && <div />}
         </div>
       </div>
+      {props.gameType && props.gameType !== props?.type && <div className="filter" />}
     </div>
   );
 };

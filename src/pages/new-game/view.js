@@ -28,7 +28,7 @@ const NewGameView = (props) => {
               <Button label="Главное меню" type="secondary" onClick={() => navigate(-1)} />
             </div>
             <div>
-              <Button label="Далее" />
+              <Button label="Далее" disabled={!props.gameType} />
             </div>
           </div>
         </div>

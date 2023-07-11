@@ -10,11 +10,32 @@
   cursor: pointer;
   margin-bottom: 1vh;
 
-  &:hover, &.selected {
+  &:hover:not(.disabled), &.selected {
     padding: 2px;
     box-shadow: 0px 0px 30px 0px rgba(48, 156, 255, 0.50);
     height: 63vh;
     margin-bottom: 0;
+  }
+
+  // &.disabled > .filter {
+  //   display: none !important;
+  //   background-color: #459DFC;
+  //   opacity: 1;
+  // }
+
+  &.disabled {
+    position: relative;
+    //opacity: 0.4;
+    cursor: auto;
+
+    .filter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0.6;
+    }
   }
 
   > div {
