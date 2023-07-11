@@ -10,7 +10,7 @@ import './styles.scss';
 
 import { Button } from '../../ui-kit';
 //import { RulesContext } from '../../App';
-import ModalGameRules from '../../components/ModalGameRules';
+import { Modals } from '../../components';
 
 const Menu = () => {
   const [isRulesActive, setIsRulesActive] = useState(false);
@@ -19,8 +19,6 @@ const Menu = () => {
 
   const isNewUser = useSelector((state) => state.isNewUser);
   //const { activeRules, setActiveRules } = useContext(RulesContext);
-
-  console.log(isNewUser);
 
   const showModal = () => setIsRulesActive(!isRulesActive);
 
@@ -37,7 +35,13 @@ const Menu = () => {
         <div className="logo__menu" />
         <div className="buttons__menu">
           <div>
-            <Button label="Начать игру" type="default" />
+            <Button
+              label="Начать игру"
+              type="default"
+              onClick={() => {
+                navigate('/new-game');
+              }}
+            />
           </div>
           <div className="dark-button__background">
             <Button label="Настройка профиля" type="secondary" />
@@ -55,7 +59,7 @@ const Menu = () => {
           </div> */}
         </div>
       </div>
-      <ModalGameRules isRulesActive={isRulesActive} onClose={showModal} />
+      <Modals.ModalGameRules isRulesActive={isRulesActive} onClose={showModal} />
     </>
   );
 };

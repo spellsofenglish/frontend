@@ -1,0 +1,16 @@
+#--header {
+  padding: 16px 120px;
+  border-bottom: 1px solid #E2EBF440;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+
+    .user {
+      display: flex;
+      width: 120px;
+      gap: 24px;
+    }
+  }
+}

@@ -11,6 +11,7 @@ import {
   Authorization,
   Politics,
   Menu,
+  NewGame,
   //Storybook
 } from './pages';
 
@@ -31,6 +32,7 @@ function App() {
       <Route path="/reset" element={<Authorization isReset={true} />} />
       <Route path="/auth/menu" element={<Navigate to="/menu" />} />
       <Route path="/reset/menu" element={<Navigate to="/menu" />} />
+      <Route path="/new-game" element={<NewGame />} />
       {/* <Route path="/storybook" element={<Storybook />} /> */}
     </Routes>
     //</RulesContext.Provider>

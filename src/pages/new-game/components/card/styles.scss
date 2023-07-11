@@ -1,0 +1,71 @@
+.gamecard {
+  width: 42vh;
+  max-width: 400px;
+  height: 62vh;
+  max-height: 592px;
+  color: white;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #459DFC 0%, #071A7A 100%);
+  padding: 1px;
+  cursor: pointer;
+  margin-bottom: 1vh;
+
+  &:hover, &.selected {
+    padding: 2px;
+    box-shadow: 0px 0px 30px 0px rgba(48, 156, 255, 0.50);
+    height: 63vh;
+    margin-bottom: 0;
+  }
+
+  > div {
+    height: 100%;
+    background-color: #1D1C2B;
+    border-radius: 6px;
+  }
+
+  .single, .team {
+    width: 100%;
+    height: 60%;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 6px;
+  }
+
+  .single {
+    background-image: url('../../../../assets/images/single-player.png');
+  }
+
+  .team {
+    background-image: url('../../../../assets/images/team-player.png');
+  }
+
+  .game-description {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      h3 {
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px;
+      }
+
+      p {
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+  }
+}
