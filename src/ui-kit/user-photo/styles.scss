@@ -1,0 +1,25 @@
+.user-photo-root {
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  &.default {
+    height: 48px;
+    width: 48px;
+  }
+
+  &.large {
+    height: 64px;
+    width: 64px;
+  }
+
+  &.anon {
+    background-color: rgba(226, 235, 244, 0.25);
+  }
+
+  > svg {
+    display: block;
+    margin: 0 auto;
+  }
+}

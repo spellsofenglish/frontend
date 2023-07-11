@@ -26,8 +26,6 @@ const Button = (props) => {
       str += ' icon';
     }
 
-    console.log(str);
-
     return str;
   };
 
