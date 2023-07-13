@@ -11,6 +11,7 @@ export default class UsersService {
     authorization: '/auth/login',
     recovery: '/auth/recoveryPass',
     resetPassword: '/auth/changePassword',
+    signout: '/auth/signout',
   };
 
   static async register(data) {
@@ -99,6 +100,31 @@ export default class UsersService {
       }
     } catch (error) {
       debug.error(`GET request was failed with path: ${URL}${this.API_ENDPOINTS.recovery}`, error);
+      throw await error.response?.json();
+    }
+  }
+
+  static async signout(data) {
+    try {
+      const request = await api.post(`${URL}${this.API_ENDPOINTS.signout}`, {
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        token: window.localStorage.getItem('@authentication/auth_token'),
+      });
+
+      debug.success('The result of logging out', request);
+
+      if (request.status !== HTTP_STATUS.SUCCESS) {
+        return Promise.reject(`Incorrect status ${request.status}`);
+      }
+
+      window.localStorage.clear();
+
+      //console.log(request);
+    } catch (error) {
+      debug.error(`POST request was failed with path: ${URL}${this.API_ENDPOINTS.signout}`, error);
       throw await error.response?.json();
     }
   }
