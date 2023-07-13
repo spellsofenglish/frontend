@@ -83,7 +83,7 @@ const Registration = (props) => {
   const REPEATE_PASSWORD_SCHEMA = {
     validate: {
       passwordCorrection: (value) =>
-        value.toString() === watchPassword.toString() || 'Пароли не совпадают',
+        value?.toString() === watchPassword?.toString() || 'Пароли не совпадают',
       passwordCorrectionLength: (value) => value.length !== 0 || 'Поле обязательно для заполнения',
     },
   };

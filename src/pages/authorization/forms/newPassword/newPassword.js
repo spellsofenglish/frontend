@@ -44,7 +44,7 @@ const NewPassword = (props) => {
     required: 'Поле обязательно для заполнения',
     validate: {
       passwordCorrection: (value) =>
-        value.toString() === watchPassword.toString() || 'Пароли не совпадают',
+        value?.toString() === watchPassword?.toString() || 'Пароли не совпадают',
     },
   };
 
