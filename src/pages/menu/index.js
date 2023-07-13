@@ -44,7 +44,7 @@ const Menu = () => {
             />
           </div>
           <div className="dark-button__background">
-            <Button label="Настройка профиля" type="secondary" />
+            <Button label="Настройка профиля" type="secondary" disabled={true} />
           </div>
           <div className="dark-button__background" onClick={() => navigate(-1)}>
             <Button label="Выйти из игры" type="secondary" />
