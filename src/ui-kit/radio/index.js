@@ -4,57 +4,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
 
 import './styles.scss';
-import colors from '../../styles/colors';
 
-const WZRadioView = withStyles({
-  root: {
-    color: colors.color_gray._4,
-    '&$checked': {
-      color: colors.color_basic._1,
-    },
-  },
-  checked: {},
-})((props) => {
+const Radio = (props) => {
   return (
-    <button
-      type="button"
-      className="radio-button"
-      disabled={props.disabled}
-      onClick={props.onChange}
-    >
-      <Radio
-        color="default"
-        classes={props.classes}
-        checked={props.checked}
-        disabled={props.disabled}
-      />
-      {props.label && <span>{props.label}</span>}
-    </button>
-  );
-});
-
-/**
- * @component Radio
- * @example
- * <Radio
- *  disabled={false}
- *  onChange={() => {}}
- *  checked={false}
- *  label="Female"
- * />
- */
-const WZRadio = (props) => {
-  return (
-    <WZRadioView
-      disabled={props.disabled}
-      onChange={() => props.onChange(!props.checked)}
-      checked={props.checked}
-      label={props.label}
-    />
+    <div className="radio-box">
+      <label htmlFor={props.name}>
+        <input type="radio" name={props.name} value={props.value} id={props.name} />
+        {props.label}
+      </label>
+    </div>
   );
 };
 
@@ -62,17 +22,15 @@ const WZRadio = (props) => {
  * Properties
  */
 
-WZRadio.propTypes = {
-  disabled: PropTypes.bool,
-  onChange: PropTypes.func,
-  checked: PropTypes.bool,
+Radio.propTypes = {
+  name: PropTypes.string,
   label: PropTypes.string,
+  value: PropTypes.string,
 };
-WZRadio.defaultProps = {
-  disabled: false,
-  onChange: () => {},
-  checked: false,
-  label: null,
+Radio.defaultProps = {
+  name: '',
+  label: '',
+  value: '',
 };
 
-export default WZRadio;
+export default Radio;

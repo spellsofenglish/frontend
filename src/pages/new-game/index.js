@@ -10,7 +10,7 @@ import NewGameView from './view.js';
 
 const NewGame = () => {
   const [isModalRulesVisible, setIsModalRulesVisible] = useState(false);
-  const [gameType, setGameType] = useState(null);
+  const [gameType, setGameType] = useState('single');
 
   const showModalRules = () => {
     setIsModalRulesVisible(!isModalRulesVisible);
