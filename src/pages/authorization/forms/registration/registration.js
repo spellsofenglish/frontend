@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { setStep } from '../../../../features/form/formSlice';
 
 import { QuestionBlock, TitleForm, InputForm, InputBtn } from '../../../../ui-kit';
-import { Modal } from '../../../../components/Modal';
+import { EmailModal } from '../../../../components/modals';
 
 import letterImg from '../../../../assets/images/letter.png';
 
@@ -168,7 +168,7 @@ const Registration = (props) => {
           />
         </div>
       </div>
-      <Modal
+      <EmailModal
         active={props.modalActive}
         setActive={props.setModalActive}
         src={letterImg}
@@ -177,7 +177,7 @@ const Registration = (props) => {
         <h2>Ссылка отправлена</h2>
         <p>Мы отправили ссылку на активацию аккаунта на {email}.</p>
         <p>Cледуй инструкциям письма и ты быстро вернешься в игру!</p>
-      </Modal>
+      </EmailModal>
     </>
   );
 };

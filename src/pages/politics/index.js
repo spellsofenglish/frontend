@@ -9,7 +9,7 @@ import './styles.scss';
 
 import { Button, Icon } from '../../ui-kit';
 //import { RulesContext } from '../../App';
-import ModalGameRules from '../../components/ModalGameRules';
+import { Modals } from '../../components';
 
 const Politics = () => {
   const [isRulesActive, setIsRulesActive] = useState(false);
@@ -467,7 +467,7 @@ const Politics = () => {
           </section>
         </article>
       </div>
-      <ModalGameRules isRulesActive={isRulesActive} onClose={showModal} />
+      <Modals.ModalGameRules isRulesActive={isRulesActive} onClose={showModal} />
     </>
   );
 };
