@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import './styles/colors.scss';
 
 * {
   margin: 0;
@@ -12,5 +13,5 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  background-color: #1D1C2B;
+  background-color: map-get($color_background, '_a');
 }

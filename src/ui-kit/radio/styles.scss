@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .radio-box {
   > label {
     display: flex;
@@ -12,13 +14,13 @@
   input[type="radio"] {
 		-webkit-appearance: none;
 		appearance: none;
-		background-color: rgba(226, 235, 244, 0.25);
+		background-color: map-get($color_white, '_c');
 		display: grid;
 		place-content: center;
 		font: inherit;
 		width: 24px;
 		height: 24px;
-		border: 1px solid rgba(226, 235, 244, 0.25);
+		border: 1px solid map-get($color_white, '_c');
 		border-radius: 50%;
 		transform: translateY(-0.075em);
 		cursor: pointer;

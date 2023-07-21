@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .user-photo-root {
   border-radius: 50%;
   display: flex;
@@ -15,7 +17,7 @@
   }
 
   &.anon {
-    background-color: rgba(226, 235, 244, 0.25);
+    background-color: map-get($color_white, '_c');
   }
 
   > svg {

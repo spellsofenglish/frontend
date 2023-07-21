@@ -1,10 +1,10 @@
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import '../../styles/colors.scss';
+
 .background__politics {
-  background: #1D1C2B;
+  background: map-get($color_background, '_a');
   padding-bottom: 78px;
 
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-
-  $dark-blue: #2A293D;
   $font-style: 'Inter';
 
   .container {
@@ -13,7 +13,7 @@
   }
 
   .header__politics {
-    border-bottom: 1px solid rgba(226, 235, 244, 0.25);
+    border-bottom: 1px solid map-get($color_white, '_c');
   }
 
   .buttons__politics {
@@ -38,7 +38,7 @@
       height: 46px;
       border-radius: inherit;
       border: none;
-      background: $dark-blue no-repeat center;
+      background: map-get($color_background, '_b');
       box-shadow: inset 0 6px 4px rgba(255, 255, 255, 0.25);
       cursor: pointer;
     }
@@ -71,7 +71,7 @@
   .politics {
     text-align: center;
     margin: 0 auto;
-    background: #FFFFFF;
+    color: map-get($color_white, '_a');
     max-width: 1560px;
     padding-bottom: 64px;
 
@@ -82,7 +82,7 @@
       font-style: normal;
       font-size: 32px;
       line-height: 44px;
-      color: $dark-blue;
+      color: map-get($color_background, '_b');
     }
   }
 
@@ -97,7 +97,7 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 24px;
-      color: $dark-blue;
+      color: map-get($color_background, '_b');
     }
 
     .close {

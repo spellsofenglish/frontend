@@ -1,6 +1,8 @@
+@import '../../styles/colors.scss';
+
 #--header {
   padding: 16px 120px;
-  border-bottom: 1px solid #E2EBF440;
+  border-bottom: 1px solid map-get($color_white, '_c');
 
   > div {
     display: flex;

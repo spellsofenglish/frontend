@@ -1,9 +1,11 @@
+@import '../../../../styles/colors.scss';
+
 .gamecard {
   width: 42vh;
   max-width: 400px;
   height: 62vh;
   max-height: 592px;
-  color: white;
+  color: map-get($color_white, '_a');
   border-radius: 6px;
   background: linear-gradient(180deg, #459DFC 0%, #071A7A 100%);
   padding: 1px;
@@ -40,7 +42,7 @@
 
   > div {
     height: 100%;
-    background-color: #1D1C2B;
+    background-color: map-get($color_background, '_a');
     border-radius: 6px;
   }
 

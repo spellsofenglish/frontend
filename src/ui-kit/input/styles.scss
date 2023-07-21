@@ -1,10 +1,12 @@
+@import '../../styles/colors.scss';
+
 .input-wrapper {
   display: flex;
   flex-direction: column;
   gap: 4px;
   width: 100%;
   padding-bottom: 16px;
-  background-color: transparent !important;
+  background-color: transparent;
 
   label {
     font-weight: 500;
@@ -18,10 +20,10 @@
     height: 40px;
     font-size: 14px;
     line-height: 20px;
-    color: #FFFFFF;
+    color: map-get($color_white, '_a');
     padding: 10px 12px;
-    background: rgba(226, 235, 244, 0.05) !important;
-    border: 1px solid rgba(226, 235, 244, 0.25);
+    background: map-get($color_white, '_f') !important;
+    border: 1px solid map-get($color_white, '_c');
     border-radius: 6px;
     transition: all .3s linear;
   }
