@@ -5,9 +5,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useCookies } from 'react-cookie';
 
-//import UsersService from '../../services/users';
+import UsersService from '../../services/users';
 
 import './styles.scss';
 
@@ -16,9 +15,6 @@ import { Modals } from '../../components';
 
 const Menu = () => {
   const [isRulesActive, setIsRulesActive] = useState(false);
-  const [cookies] = useCookies('session');
-
-  //const [cookies] = useCookies(['cookie-name']);
 
   const navigate = useNavigate();
 
@@ -27,12 +23,10 @@ const Menu = () => {
 
   const showModal = () => setIsRulesActive(!isRulesActive);
 
-  const singOut = async () => {
-    console.log(cookies);
+  const signOut = async () => {
     try {
-      //await UsersService.signout();
+      await UsersService.signout();
       navigate(-1);
-      //setCookies('');
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +57,7 @@ const Menu = () => {
             <Button label="Настройка профиля" type="secondary" disabled={true} />
           </div>
           <div className="dark-button__background">
-            <Button label="Выйти из игры" type="secondary" onClick={singOut} />
+            <Button label="Выйти из игры" type="secondary" onClick={signOut} />
           </div>
           <div>
             <Button type="secondary" icon="rules" onClick={showModal} />

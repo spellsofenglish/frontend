@@ -36,7 +36,7 @@ export default class UsersService {
       throw await error.response?.json();
     }
   }
-  //credentials
+
   static async authorization(data) {
     try {
       const request = await api.post(`${URL}${this.API_ENDPOINTS.authorization}`, {
@@ -111,7 +111,6 @@ export default class UsersService {
           'content-type': 'application/json',
         },
         body: JSON.stringify(data),
-        token: window.localStorage.getItem('@authentication/auth_token'),
       });
 
       debug.success('The result of logging out', request);
@@ -120,9 +119,7 @@ export default class UsersService {
         return Promise.reject(`Incorrect status ${request.status}`);
       }
 
-      window.localStorage.clear();
-
-      //console.log(request);
+      //redux
     } catch (error) {
       debug.error(`POST request was failed with path: ${URL}${this.API_ENDPOINTS.signout}`, error);
       throw await error.response?.json();
