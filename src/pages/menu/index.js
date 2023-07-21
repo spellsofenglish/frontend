@@ -35,12 +35,6 @@ const Menu = () => {
         <div className="logo__menu" />
         <div className="buttons__menu">
           <div>
-<<<<<<< HEAD:src/pages/menu/index.js
-            <Button label="Начать игру" type="default" />
-          </div>
-          <div className="dark-button__background">
-            <Button label="Настройка профиля" type="secondary" />
-=======
             <Button
               label="Начать игру"
               type="default"
@@ -51,7 +45,6 @@ const Menu = () => {
           </div>
           <div className="dark-button__background">
             <Button label="Настройка профиля" type="secondary" disabled={true} />
->>>>>>> c214502670e7258bffa3d8272fd9a131f5ddae6a:src/pages/MainMenu/index.js
           </div>
           <div className="dark-button__background" onClick={() => navigate(-1)}>
             <Button label="Выйти из игры" type="secondary" />
