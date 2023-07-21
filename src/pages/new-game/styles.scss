@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 #--new-game-page {
   width: 100vw;
   height: 100vh;
@@ -6,7 +8,7 @@
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
-  color: white;
+  color: map-get($color_white, '_a');
   text-align: center;
 
   h1 {

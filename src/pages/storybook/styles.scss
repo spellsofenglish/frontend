@@ -1,5 +1,7 @@
+@import '../../styles/colors.scss';
+
 #--storybook {
-  background-color: #1D1C2B;
+  background-color: map-get($color_background, '_a');
   min-height: 100vh;
   width: 100vw;
 }

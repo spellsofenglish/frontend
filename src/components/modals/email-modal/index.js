@@ -9,7 +9,7 @@ import { Button } from '../../../ui-kit/';
 
 const EmailModal = ({ active, setActive, children, src, alt }) => {
   return (
-    <div className={active ? 'background' : null}>
+    <div id="email-modal" className={active ? 'background' : null}>
       <div className={active ? 'modal__background active' : 'modal__background'}>
         <div className={active ? 'modal' : null}>
           <img className="modal__img" src={src} alt={alt} />

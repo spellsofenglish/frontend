@@ -1,0 +1,73 @@
+//WHITE AND GRAY PALETTE
+$color_white: (
+  '_a': #FFFFFF,
+  '_b': rgba(226, 235, 244, 0.50),
+  '_c': rgba(226, 235, 244, 0.25),
+  '_d': #5B5D6C,
+  '_e': rgba(226, 235, 244, 0.10),
+  '_f': rgba(226, 235, 244, 0.05),
+);
+
+//BACKGROUND PALETTE
+$color_background: (
+  '_a': #1D1C2B,
+  '_b': #2A293D,
+  '_c': #4D4F62,
+);
+
+//BLACK PALETTE
+$color_black: (
+  '_a': #000000,
+);
+
+//GREEN PALETTE
+$color_green: (
+  '_a': #21A957,
+  '_b': rgba(33, 169, 87, 0.15),
+);
+
+//YELLOW PALETTE
+$color_yellow: (
+  '_a': #ECBB0C,
+  '_b': rgba(236, 187, 12, 0.15),
+);
+
+//ORANGE PALETTE
+$color_orange: (
+  '_a': #EC840A,
+  '_b': #D75207,
+  '_c': #AD4202,
+  '_d': #7E3718,
+);
+
+// $gradient_orange: (
+//   '_a': 180deg, #EC840A 0%, #D75E07 100%,
+//   '_b': 180deg, #E2660C 0%, #D75207 100%,
+// );
+
+//RED PALETTE
+$color_red: (
+  '_a': #DF1616,
+  '_b': rgba(223, 22, 22, 0.15),
+);
+
+// $gradient_red: (
+//   '_a': 180deg, #CE0F0F 0%, #860909 100%,
+// );
+
+//BLUE PALETTE
+$color_blue: (
+  '_a': #309CFF,
+  '_b': #2087E7,
+  '_c': #054BB2,
+);
+
+// $gradient_blue: (
+//   '_a': 180deg, #0F8CFF 0%, #0C67D2 100%,
+//   '_b': 180deg, #096BC5 0%, #054BB2 100%,
+// );
+
+//PURPLE PALETTE
+$color_purple: (
+  '_a': #6020E7,
+);
